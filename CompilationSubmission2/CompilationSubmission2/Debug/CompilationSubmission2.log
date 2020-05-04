@@ -1,0 +1,43 @@
+﻿Build started 04-May-20 17:43:24.
+     1>Project "C:\integrationcourseenv\Projects\CompilationCourse\OurHomeworks\Submission2Compilation\CompilationHW2\CompilationSubmission2\CompilationSubmission2\CompilationSubmission2.vcxproj" on node 2 (Rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\Compilat.331E3043.tlog\CompilationSubmission2.lastbuildstate".
+       InitializeBuildStatus:
+         Touching "Debug\Compilat.331E3043.tlog\unsuccessfulbuild".
+       BisonTarget:
+         Process "submission.y" bison file
+         cmd.exe /D /C "C:\Users\DAN\AppData\Local\Temp\tmp286ac13956124f3fb2a4d3abeee55ba4.cmd"
+         
+         start /B /WAIT /D "C:\integrationcourseenv\Projects\CompilationCourse\OurHomeworks\Submission2Compilation\CompilationHW2\CompilationSubmission2\CompilationSubmission2\" win_bison.exe --output="submission.tab.cpp" --defines="submission.tab.h"  "submission.y"
+         exit /b %errorlevel%
+       FlexTarget:
+         Process "subm2Flex.l" flex file
+         cmd.exe /D /C "C:\Users\DAN\AppData\Local\Temp\tmp966a48c53fd849acbe6b06ff52194fef.cmd"
+         
+         start /B /WAIT /D "C:\integrationcourseenv\Projects\CompilationCourse\OurHomeworks\Submission2Compilation\CompilationHW2\CompilationSubmission2\CompilationSubmission2\" win_flex.exe --outfile="subm2Flex.flex.cpp" --wincompat  "subm2Flex.l"
+         exit /b %errorlevel%
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /analyze- /FC /errorReport:prompt subm2Flex.flex.cpp submission.tab.cpp
+         subm2Flex.flex.cpp
+     1>c:\integrationcourseenv\projects\compilationcourse\ourhomeworks\submission2compilation\compilationhw2\compilationsubmission2\compilationsubmission2\subm2flex.l(7): warning C4273: 'atoi': inconsistent dll linkage
+         c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdlib.h(447): note: see previous definition of 'atoi'
+         submission.tab.cpp
+     1>c:\integrationcourseenv\projects\compilationcourse\ourhomeworks\submission2compilation\compilationhw2\compilationsubmission2\compilationsubmission2\submission.y(4): fatal error C1083: Cannot open include file: 'stdafx.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\integrationcourseenv\Projects\CompilationCourse\OurHomeworks\Submission2Compilation\CompilationHW2\CompilationSubmission2\CompilationSubmission2\CompilationSubmission2.vcxproj" (Rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+       "C:\integrationcourseenv\Projects\CompilationCourse\OurHomeworks\Submission2Compilation\CompilationHW2\CompilationSubmission2\CompilationSubmission2\CompilationSubmission2.vcxproj" (Rebuild target) (1) ->
+       (ClCompile target) -> 
+         c:\integrationcourseenv\projects\compilationcourse\ourhomeworks\submission2compilation\compilationhw2\compilationsubmission2\compilationsubmission2\subm2flex.l(7): warning C4273: 'atoi': inconsistent dll linkage
+
+
+       "C:\integrationcourseenv\Projects\CompilationCourse\OurHomeworks\Submission2Compilation\CompilationHW2\CompilationSubmission2\CompilationSubmission2\CompilationSubmission2.vcxproj" (Rebuild target) (1) ->
+       (ClCompile target) -> 
+         c:\integrationcourseenv\projects\compilationcourse\ourhomeworks\submission2compilation\compilationhw2\compilationsubmission2\compilationsubmission2\submission.y(4): fatal error C1083: Cannot open include file: 'stdafx.h': No such file or directory
+
+    1 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.76
