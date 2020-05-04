@@ -41,6 +41,9 @@
   <ItemGroup>
     <ClInclude Include="submission.tab.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="input.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{331E3043-C426-4C97-A49D-E7B9DBF9EB21}</ProjectGuid>

@@ -70,8 +70,8 @@
  
 	#define _CRT_SECURE_NO_DEPRECATE
     #include <stdio.h> 
-	#include "stdafx.h"
-    #include <iostream> using namespace std;
+    #include <iostream> 
+	using namespace std;
 
   // stuff from flex that bison needs to know about: 
   extern int yylex(); 
@@ -525,7 +525,7 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    27,    27,    29,    31,    31,    31,    32,    32
+       0,    26,    26,    27,    31,    32,    32,    33,    34
 };
 #endif
 
@@ -1317,7 +1317,7 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 27 "submission.y"
+#line 26 "submission.y"
             { printf("title"); }
 #line 1323 "submission.tab.cpp"
     break;
@@ -1329,27 +1329,25 @@ yyreduce:
     break;
 
   case 6:
-#line 31 "submission.y"
-                                                                               { 
-printf("title"); }
-#line 1336 "submission.tab.cpp"
+#line 32 "submission.y"
+                                       { printf("1"); }
+#line 1335 "submission.tab.cpp"
     break;
 
   case 7:
-#line 32 "submission.y"
-                         { printf("title"); }
-#line 1342 "submission.tab.cpp"
+#line 33 "submission.y"
+      { printf("2"); }
+#line 1341 "submission.tab.cpp"
     break;
 
   case 8:
-#line 32 "submission.y"
-                                                                           { 
-printf("title"); }
-#line 1349 "submission.tab.cpp"
+#line 34 "submission.y"
+                             { printf("3"); }
+#line 1347 "submission.tab.cpp"
     break;
 
 
-#line 1353 "submission.tab.cpp"
+#line 1351 "submission.tab.cpp"
 
       default: break;
     }
@@ -1581,19 +1579,16 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 36 "submission.y"
-
+#line 37 "submission.y"
 
 int main (int argc, char **argv)
 {
-   int token;
+   //if (argc != 2) {
+   //   fprintf(stderr, "Usage: mylex <input file name>\n", argv [0]);
+   //   exit (1);
+   //}
 
-   if (argc != 2) {
-      fprintf(stderr, "Usage: mylex <input file name>\n", argv [0]);
-      exit (1);
-   }
-
-   yyin = fopen (argv[1], "r");
+   yyin = fopen ("input.txt", "r");
    printf ("TOKEN\t\t\tLEXEME\t\t\tSEMANTIC VALUE\n");
    printf ("-----------------------------------------------------------------------\n");
 
@@ -1603,7 +1598,7 @@ int main (int argc, char **argv)
 }
 
 void yyerror(const char *s) {
-  cout << "EEK, parse error!  Message: " << s << endl;
+  printf ("EEK, parse error!  Message");
   // might as well halt now:
   exit(-1);
 }
