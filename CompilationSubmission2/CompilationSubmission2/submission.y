@@ -14,24 +14,95 @@
 
 /* note: no semicolon after the union */ 
 
-%union { 
-int ival; 
+
+
+%code requires {
+	
+
+	
+
+	struct counter{
+		int c;
+		int year;
+		char cname[30];
+		
+		
+	};
 }
+
+%union { 
+	int year;
+	int number;
+	int avr;
+	char oname[30];
+	struct counter count;
+	
+
+}
+
 
 // define the "terminal symbol" token types I'm going to use (in CAPS 
 // by convention), and associate each with a field of the union: 
-%token SPORT SPORT_NAME SEMICOLON TITLE YEARS YEAR_NUM COMMA THROUGH SINCE ALL
+%token SPORT  TITLE YEARS COMMA THROUGH SINCE ALL NEWLINE 
+%token <year> YEAR_NUM  
+%type <year> year_exp
+%token <oname> SPORT_NAME
+%type <count> gamelist game 
+
+
+
 
 %% 
-line: TITLE { printf("title"); } 
-| SPORT SPORT_NAME YEARS year_exp 
-;
+line: TITLE NEWLINE gamelist
+{
+double avg=(double)$3.year/(double)$3.c;
+printf("the sum is %d\n",$3.year);
+printf("the avg is %f\n",avg);
+}
+
+gamelist: /* empty */{};
+
+gamelist: gamelist game NEWLINE 
+{
+	if($$.c<0)
+	{
+		$$.c=1;
+
+	}else
+	{
+		$$.c=$1.c+1;
+	}
+	if($$.year<0)
+	{
+		$$.year=$2.year;
+
+	}else
+	{
+		$$.year = $1.year+$2.year;
+	}
+
+printf("%d\n" , $$.c);
+printf("%d\n" , $$.year);
+
+} 
+
+game: SPORT SPORT_NAME YEARS year_exp
+{ if($4 >= 7)
+	{
+	printf("%s\n" , $2);
+	}
+ $$.c=1;
+ $$.year=$4;
+
+ }
+
+year_exp: YEAR_NUM {$$= 1; }
+year_exp:year_exp COMMA year_exp {$$ = $1 + $3;}
+year_exp:SINCE YEAR_NUM { $$ = ((2016-$2)/4)+1;}
+year_exp:ALL { $$ = ((2016-1896)/4)+1;  } 
+year_exp:YEAR_NUM THROUGH YEAR_NUM {$$ = (($3-$1)/4)+1;}
 
 
-year_exp: YEAR_NUM { printf("title"); } 
-|  year_exp SEMICOLON | SINCE YEAR_NUM { printf("1"); } 
-| ALL { printf("2"); } 
-|  YEAR_NUM THROUGH YEAR_NUM { printf("3"); } ;
 
 
 %%
@@ -43,12 +114,13 @@ int main (int argc, char **argv)
    //}
 
    yyin = fopen ("input.txt", "r");
-   printf ("TOKEN\t\t\tLEXEME\t\t\tSEMANTIC VALUE\n");
-   printf ("-----------------------------------------------------------------------\n");
+   printf("sports which appeared in at least 7 olympic games:\n");
 
   // Parse through the input:
   yyparse();
+  printf("\naverage number of games per sport:	\n");
    fclose (yyin);
+ 
 }
 
 void yyerror(const char *s) {

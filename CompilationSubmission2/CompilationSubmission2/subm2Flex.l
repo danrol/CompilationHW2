@@ -19,15 +19,19 @@ extern int atoi (const char *);
 
 %%
 
+
+"\n" {return NEWLINE; }
 "<sport>"  { return SPORT; }
 
 "<years>" { return YEARS; }
 
-\"([A-Z][a-z]+[ ]{0,1})*\" {  return SPORT_NAME; }
+\"([A-Z][a-z]+[ ]{0,1})*\" { strcpy_s(yylval.oname , yytext+1); 
+
+return SPORT_NAME; }
 
 ([A-Z][a-z]+[ ]{0,1})* {  return TITLE; }
 
-2020|20[0-1][0-9]|19[0-9][0-9]|189[6-9] {  return YEAR_NUM; }
+2020|20[0-1][0-9]|19[0-9][0-9]|189[6-9] {  yylval.year = atoi(yytext); return YEAR_NUM; }
 
 "," { return COMMA; }
 

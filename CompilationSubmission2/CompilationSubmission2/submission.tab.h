@@ -43,6 +43,22 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+#line 19 "submission.y"
+
+	
+
+	
+
+	struct counter{
+		int c;
+		int year;
+		char cname[30];
+		
+		
+	};
+
+#line 62 "submission.tab.h"
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -50,15 +66,15 @@ extern int yydebug;
   enum yytokentype
   {
     SPORT = 258,
-    SPORT_NAME = 259,
-    SEMICOLON = 260,
-    TITLE = 261,
-    YEARS = 262,
-    YEAR_NUM = 263,
-    COMMA = 264,
-    THROUGH = 265,
-    SINCE = 266,
-    ALL = 267
+    TITLE = 259,
+    YEARS = 260,
+    COMMA = 261,
+    THROUGH = 262,
+    SINCE = 263,
+    ALL = 264,
+    NEWLINE = 265,
+    YEAR_NUM = 266,
+    SPORT_NAME = 267
   };
 #endif
 
@@ -66,11 +82,17 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 17 "submission.y"
+#line 33 "submission.y"
  
-int ival; 
+	int year;
+	int number;
+	int avr;
+	char oname[30];
+	struct counter count;
+	
 
-#line 74 "submission.tab.h"
+
+#line 96 "submission.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

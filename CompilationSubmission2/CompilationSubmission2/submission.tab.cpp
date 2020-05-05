@@ -122,6 +122,22 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+#line 19 "submission.y"
+
+	
+
+	
+
+	struct counter{
+		int c;
+		int year;
+		char cname[30];
+		
+		
+	};
+
+#line 141 "submission.tab.cpp"
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -129,15 +145,15 @@ extern int yydebug;
   enum yytokentype
   {
     SPORT = 258,
-    SPORT_NAME = 259,
-    SEMICOLON = 260,
-    TITLE = 261,
-    YEARS = 262,
-    YEAR_NUM = 263,
-    COMMA = 264,
-    THROUGH = 265,
-    SINCE = 266,
-    ALL = 267
+    TITLE = 259,
+    YEARS = 260,
+    COMMA = 261,
+    THROUGH = 262,
+    SINCE = 263,
+    ALL = 264,
+    NEWLINE = 265,
+    YEAR_NUM = 266,
+    SPORT_NAME = 267
   };
 #endif
 
@@ -145,11 +161,17 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 17 "submission.y"
+#line 33 "submission.y"
  
-int ival; 
+	int year;
+	int number;
+	int avr;
+	char oname[30];
+	struct counter count;
+	
 
-#line 153 "submission.tab.cpp"
+
+#line 175 "submission.tab.cpp"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -466,18 +488,18 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  5
+#define YYFINAL  4
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   11
+#define YYLAST   14
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  13
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  3
+#define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  8
+#define YYNRULES  10
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  15
+#define YYNSTATES  20
 
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   267
@@ -525,7 +547,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    26,    26,    27,    31,    32,    32,    33,    34
+       0,    56,    56,    63,    65,    89,    99,   100,   101,   102,
+     103
 };
 #endif
 
@@ -534,9 +557,9 @@ static const yytype_int8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "SPORT", "SPORT_NAME", "SEMICOLON",
-  "TITLE", "YEARS", "YEAR_NUM", "COMMA", "THROUGH", "SINCE", "ALL",
-  "$accept", "line", "year_exp", YY_NULLPTR
+  "$end", "error", "$undefined", "SPORT", "TITLE", "YEARS", "COMMA",
+  "THROUGH", "SINCE", "ALL", "NEWLINE", "YEAR_NUM", "SPORT_NAME",
+  "$accept", "line", "gamelist", "game", "year_exp", YY_NULLPTR
 };
 #endif
 
@@ -564,8 +587,8 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -1,    -3,    -9,     6,     0,    -9,    -8,    -2,     1,    -9,
-       5,     3,    -9,    -9,    -9
+      -2,    -6,     5,    -9,    -9,     3,    -5,    -1,     6,    -9,
+      -8,    -3,    -9,     7,     4,    -9,     1,    -8,    -9,     4
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -573,20 +596,20 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,     2,     0,     0,     1,     0,     4,     0,     7,
-       3,     0,     6,     5,     8
+       0,     0,     0,     3,     1,     2,     0,     0,     0,     4,
+       0,     0,     9,     6,     5,     8,     0,     0,    10,     7
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -9,    -9,    -9
+      -9,    -9,    -9,    -9,    -4
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     3,    10
+      -1,     2,     5,     7,    14
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -594,34 +617,36 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       7,     4,     1,     8,     9,     2,     5,     6,    11,    12,
-      13,    14
+      11,    12,     1,    13,     3,     4,     6,     8,    15,     9,
+      17,    10,    18,    19,    16
 };
 
 static const yytype_int8 yycheck[] =
 {
-       8,     4,     3,    11,    12,     6,     0,     7,    10,     8,
-       5,     8
+       8,     9,     4,    11,    10,     0,     3,    12,    11,    10,
+       6,     5,    11,    17,     7
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,     6,    14,     4,     0,     7,     8,    11,    12,
-      15,    10,     8,     5,     8
+       0,     4,    14,    10,     0,    15,     3,    16,    12,    10,
+       5,     8,     9,    11,    17,    11,     7,     6,    11,    17
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    13,    14,    14,    15,    15,    15,    15,    15
+       0,    13,    14,    15,    15,    16,    17,    17,    17,    17,
+      17
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     1,     4,     1,     2,     2,     1,     3
+       0,     2,     3,     0,     3,     4,     1,     3,     2,     1,
+       3
 };
 
 
@@ -1317,37 +1342,93 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 26 "submission.y"
-            { printf("title"); }
-#line 1323 "submission.tab.cpp"
+#line 57 "submission.y"
+{
+double avg=(double)(yyvsp[0].count).year/(double)(yyvsp[0].count).c;
+printf("the sum is %d\n",(yyvsp[0].count).year);
+printf("the avg is %f\n",avg);
+}
+#line 1352 "submission.tab.cpp"
+    break;
+
+  case 3:
+#line 63 "submission.y"
+                     {}
+#line 1358 "submission.tab.cpp"
     break;
 
   case 4:
-#line 31 "submission.y"
-                   { printf("title"); }
-#line 1329 "submission.tab.cpp"
+#line 66 "submission.y"
+{
+	if((yyval.count).c<0)
+	{
+		(yyval.count).c=1;
+
+	}else
+	{
+		(yyval.count).c=(yyvsp[-2].count).c+1;
+	}
+	if((yyval.count).year<0)
+	{
+		(yyval.count).year=(yyvsp[-1].count).year;
+
+	}else
+	{
+		(yyval.count).year = (yyvsp[-2].count).year+(yyvsp[-1].count).year;
+	}
+
+printf("%d\n" , (yyval.count).c);
+printf("%d\n" , (yyval.count).year);
+
+}
+#line 1385 "submission.tab.cpp"
+    break;
+
+  case 5:
+#line 90 "submission.y"
+{ if((yyvsp[0].year) >= 7)
+	{
+	printf("%s\n" , (yyvsp[-2].oname));
+	}
+ (yyval.count).c=1;
+ (yyval.count).year=(yyvsp[0].year);
+
+ }
+#line 1398 "submission.tab.cpp"
     break;
 
   case 6:
-#line 32 "submission.y"
-                                       { printf("1"); }
-#line 1335 "submission.tab.cpp"
+#line 99 "submission.y"
+                   {(yyval.year)= 1; }
+#line 1404 "submission.tab.cpp"
     break;
 
   case 7:
-#line 33 "submission.y"
-      { printf("2"); }
-#line 1341 "submission.tab.cpp"
+#line 100 "submission.y"
+                                 {(yyval.year) = (yyvsp[-2].year) + (yyvsp[0].year);}
+#line 1410 "submission.tab.cpp"
     break;
 
   case 8:
-#line 34 "submission.y"
-                             { printf("3"); }
-#line 1347 "submission.tab.cpp"
+#line 101 "submission.y"
+                        { (yyval.year) = ((2016-(yyvsp[0].year))/4)+1;}
+#line 1416 "submission.tab.cpp"
+    break;
+
+  case 9:
+#line 102 "submission.y"
+             { (yyval.year) = ((2016-1896)/4)+1;  }
+#line 1422 "submission.tab.cpp"
+    break;
+
+  case 10:
+#line 103 "submission.y"
+                                   {(yyval.year) = (((yyvsp[0].year)-(yyvsp[-2].year))/4)+1;}
+#line 1428 "submission.tab.cpp"
     break;
 
 
-#line 1351 "submission.tab.cpp"
+#line 1432 "submission.tab.cpp"
 
       default: break;
     }
@@ -1579,7 +1660,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 37 "submission.y"
+#line 108 "submission.y"
 
 int main (int argc, char **argv)
 {
@@ -1589,12 +1670,13 @@ int main (int argc, char **argv)
    //}
 
    yyin = fopen ("input.txt", "r");
-   printf ("TOKEN\t\t\tLEXEME\t\t\tSEMANTIC VALUE\n");
-   printf ("-----------------------------------------------------------------------\n");
+   printf("sports which appeared in at least 7 olympic games:\n");
 
   // Parse through the input:
   yyparse();
+  printf("\naverage number of games per sport:	\n");
    fclose (yyin);
+ 
 }
 
 void yyerror(const char *s) {
