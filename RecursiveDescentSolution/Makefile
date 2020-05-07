@@ -10,7 +10,7 @@ lex.yy.o : lex.yy.c recursive_descent.h
 recursive_descent.o : recursive_descent.c recursive_descent.h 
 	gcc -c recursive_descent.c
 	
-lex.yy.c : recursive_descent.lex
+lex.yy.c : recursive_descent.l
 	win_flex recursive_descent.l
 	
 clean :
