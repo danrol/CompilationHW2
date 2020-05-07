@@ -11,7 +11,7 @@ recursive_descent.o : recursive_descent.c recursive_descent.h
 	gcc -c recursive_descent.c
 	
 lex.yy.c : recursive_descent.lex
-	win_flex recursive_descent.lex
+	win_flex recursive_descent.l
 	
 clean :
 	rm $(objects) recursive_descent.exe
