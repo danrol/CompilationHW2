@@ -1,0 +1,14 @@
+[playlist]
+
+1 [song] "Material Girl" [artist] Madonna [length] 4:10
+
+2 [song] "If You Love Somebody Set Them Free" [artist] Sting [length] 4:15
+
+3 [song] "Mustang Sally" [artist] Joe Cocker [length] 4:08
+
+4 [song] "Open Your Heart" [artist] Madonna [length] 4:13
+
+5 [song] "Another One Bites The Dust" [artist] Queen [length] 3:43
+
+6 [song] "Just Dance" [artist] Lady Gaga [length] 7:21
+ 
