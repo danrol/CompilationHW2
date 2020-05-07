@@ -520,14 +520,15 @@ char *yytext;
 
 #include "submission.tab.h"
 
+
 extern int atoi (const char *);
-#line 524 "subm2Flex.flex.cpp"
+#line 525 "subm2Flex.flex.cpp"
 /*  this will cause  flex to maintain the current input line number in 
     the global variable int yylineno.
 */	
 /* exclusive start condition -- deals with C++ style comments */ 
 
-#line 530 "subm2Flex.flex.cpp"
+#line 531 "subm2Flex.flex.cpp"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -742,11 +743,11 @@ YY_DECL
 		}
 
 	{
-#line 20 "subm2Flex.l"
+#line 21 "subm2Flex.l"
 
 
 
-#line 749 "subm2Flex.flex.cpp"
+#line 750 "subm2Flex.flex.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -816,95 +817,95 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 23 "subm2Flex.l"
+#line 24 "subm2Flex.l"
 {return NEWLINE; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 24 "subm2Flex.l"
+#line 25 "subm2Flex.l"
 { return SPORT; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 26 "subm2Flex.l"
+#line 27 "subm2Flex.l"
 { return YEARS; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 28 "subm2Flex.l"
+#line 29 "subm2Flex.l"
 { strcpy_s(yylval.oname , yytext+1); 
-
+yylval.oname[strlen(yytext)-2] = '\0';
 return SPORT_NAME; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 32 "subm2Flex.l"
+#line 33 "subm2Flex.l"
 {  return TITLE; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 34 "subm2Flex.l"
+#line 35 "subm2Flex.l"
 {  yylval.year = atoi(yytext); return YEAR_NUM; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 36 "subm2Flex.l"
+#line 37 "subm2Flex.l"
 { return COMMA; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 38 "subm2Flex.l"
+#line 39 "subm2Flex.l"
 {return THROUGH; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 40 "subm2Flex.l"
+#line 41 "subm2Flex.l"
 {return SINCE; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 42 "subm2Flex.l"
+#line 43 "subm2Flex.l"
 {return ALL; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 45 "subm2Flex.l"
+#line 46 "subm2Flex.l"
 /* skip white space */
 	YY_BREAK
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 47 "subm2Flex.l"
+#line 48 "subm2Flex.l"
 { }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 49 "subm2Flex.l"
+#line 50 "subm2Flex.l"
 { BEGIN (COMMENT); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 51 "subm2Flex.l"
+#line 52 "subm2Flex.l"
 /* skip comment */
 	YY_BREAK
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 52 "subm2Flex.l"
+#line 53 "subm2Flex.l"
 {  /* end of comment --> resume normal processing */
                 BEGIN (0); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 55 "subm2Flex.l"
+#line 56 "subm2Flex.l"
 { fprintf (stderr, "unrecognized token %c on line %d \n", yytext[0], yylineno); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 57 "subm2Flex.l"
+#line 58 "subm2Flex.l"
 ECHO;
 	YY_BREAK
-#line 907 "subm2Flex.flex.cpp"
+#line 908 "subm2Flex.flex.cpp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 	yyterminate();
@@ -1922,6 +1923,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 57 "subm2Flex.l"
+#line 58 "subm2Flex.l"
 
 

@@ -71,7 +71,10 @@
 	#define _CRT_SECURE_NO_DEPRECATE
     #include <stdio.h> 
     #include <iostream> 
+	#include <string.h>
 	using namespace std;
+
+	#define SIZE 30
 
   // stuff from flex that bison needs to know about: 
   extern int yylex(); 
@@ -80,7 +83,7 @@
 
   void yyerror(const char *s); 
 
-#line 84 "submission.tab.cpp"
+#line 87 "submission.tab.cpp"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -123,7 +126,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 19 "submission.y"
+#line 22 "submission.y"
 
 	
 
@@ -137,7 +140,7 @@ extern int yydebug;
 		
 	};
 
-#line 141 "submission.tab.cpp"
+#line 144 "submission.tab.cpp"
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -161,7 +164,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 33 "submission.y"
+#line 36 "submission.y"
  
 	int year;
 	int number;
@@ -171,7 +174,7 @@ union YYSTYPE
 	
 
 
-#line 175 "submission.tab.cpp"
+#line 178 "submission.tab.cpp"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -547,8 +550,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    56,    56,    63,    65,    89,    99,   100,   101,   102,
-     103
+       0,    60,    60,    67,    69,    93,   103,   104,   105,   106,
+     107
 };
 #endif
 
@@ -1342,23 +1345,23 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 57 "submission.y"
+#line 61 "submission.y"
 {
 double avg=(double)(yyvsp[0].count).year/(double)(yyvsp[0].count).c;
-printf("the sum is %d\n",(yyvsp[0].count).year);
-printf("the avg is %f\n",avg);
+//printf("the sum is %d\n",$3.year);
+printf("\naverage number of games per sport:%7.2f\n",avg);
 }
-#line 1352 "submission.tab.cpp"
+#line 1355 "submission.tab.cpp"
     break;
 
   case 3:
-#line 63 "submission.y"
+#line 67 "submission.y"
                      {}
-#line 1358 "submission.tab.cpp"
+#line 1361 "submission.tab.cpp"
     break;
 
   case 4:
-#line 66 "submission.y"
+#line 70 "submission.y"
 {
 	if((yyval.count).c<0)
 	{
@@ -1377,15 +1380,15 @@ printf("the avg is %f\n",avg);
 		(yyval.count).year = (yyvsp[-2].count).year+(yyvsp[-1].count).year;
 	}
 
-printf("%d\n" , (yyval.count).c);
-printf("%d\n" , (yyval.count).year);
+//printf("%d\n" , $$.c);
+//printf("%d\n" , $$.year);
 
 }
-#line 1385 "submission.tab.cpp"
+#line 1388 "submission.tab.cpp"
     break;
 
   case 5:
-#line 90 "submission.y"
+#line 94 "submission.y"
 { if((yyvsp[0].year) >= 7)
 	{
 	printf("%s\n" , (yyvsp[-2].oname));
@@ -1394,41 +1397,41 @@ printf("%d\n" , (yyval.count).year);
  (yyval.count).year=(yyvsp[0].year);
 
  }
-#line 1398 "submission.tab.cpp"
+#line 1401 "submission.tab.cpp"
     break;
 
   case 6:
-#line 99 "submission.y"
-                   {(yyval.year)= 1; }
-#line 1404 "submission.tab.cpp"
+#line 103 "submission.y"
+                   {if((yyval.year) != 2020)(yyval.year)= 1; else (yyval.year) = 0; }
+#line 1407 "submission.tab.cpp"
     break;
 
   case 7:
-#line 100 "submission.y"
+#line 104 "submission.y"
                                  {(yyval.year) = (yyvsp[-2].year) + (yyvsp[0].year);}
-#line 1410 "submission.tab.cpp"
+#line 1413 "submission.tab.cpp"
     break;
 
   case 8:
-#line 101 "submission.y"
+#line 105 "submission.y"
                         { (yyval.year) = ((2016-(yyvsp[0].year))/4)+1;}
-#line 1416 "submission.tab.cpp"
+#line 1419 "submission.tab.cpp"
     break;
 
   case 9:
-#line 102 "submission.y"
+#line 106 "submission.y"
              { (yyval.year) = ((2016-1896)/4)+1;  }
-#line 1422 "submission.tab.cpp"
+#line 1425 "submission.tab.cpp"
     break;
 
   case 10:
-#line 103 "submission.y"
+#line 107 "submission.y"
                                    {(yyval.year) = (((yyvsp[0].year)-(yyvsp[-2].year))/4)+1;}
-#line 1428 "submission.tab.cpp"
+#line 1431 "submission.tab.cpp"
     break;
 
 
-#line 1432 "submission.tab.cpp"
+#line 1435 "submission.tab.cpp"
 
       default: break;
     }
@@ -1660,21 +1663,21 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 108 "submission.y"
+#line 112 "submission.y"
 
 int main (int argc, char **argv)
 {
-   //if (argc != 2) {
-   //   fprintf(stderr, "Usage: mylex <input file name>\n", argv [0]);
-   //   exit (1);
-   //}
+   if (argc != 2) {
+      fprintf(stderr, "Usage: mylex <input file name>\n", argv [0]);
+      exit (1);
+   }
 
    yyin = fopen ("input.txt", "r");
    printf("sports which appeared in at least 7 olympic games:\n");
 
   // Parse through the input:
   yyparse();
-  printf("\naverage number of games per sport:	\n");
+ 
    fclose (yyin);
  
 }

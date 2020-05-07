@@ -4,6 +4,7 @@
 
 #include "submission.tab.h"
 
+
 extern int atoi (const char *);
 %}
 
@@ -26,7 +27,7 @@ extern int atoi (const char *);
 "<years>" { return YEARS; }
 
 \"([A-Z][a-z]+[ ]{0,1})*\" { strcpy_s(yylval.oname , yytext+1); 
-
+yylval.oname[strlen(yytext)-2] = '\0';
 return SPORT_NAME; }
 
 ([A-Z][a-z]+[ ]{0,1})* {  return TITLE; }

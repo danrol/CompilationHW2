@@ -44,7 +44,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 19 "submission.y"
+#line 22 "submission.y"
 
 	
 
@@ -82,7 +82,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 33 "submission.y"
+#line 36 "submission.y"
  
 	int year;
 	int number;
