@@ -97,18 +97,19 @@ int yearExp(int currentToken)
 		// printf("yearExp result = %d", result);
 		return result;
 	}
+	else if (currentToken == ALL)
+	{
+		printf("ALL ");
+		result = ((2016 - 1896) / 4) + 1;
+		printf("yearExp result = %d ", result);
+		return result;
+	}
 	int nextToken = yylex();
 	printf(" next token = %d\n", nextToken);
 	strcpy(nextTokenValue, yytext);
 	if(currentToken == SINCE){
 		printf("SINCE ");
 		result = ((2016 - atoi(nextTokenValue)) / 4) + 1;
-		printf("yearExp result = %d ", result);
-		return result;
-	}
-	else if (currentToken == ALL){
-		printf("ALL ");
-		result = ((2016 - 1896) / 4) + 1;
 		printf("yearExp result = %d ", result);
 		return result;
 	}
