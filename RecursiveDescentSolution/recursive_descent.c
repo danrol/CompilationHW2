@@ -69,6 +69,7 @@ struct counter game(){
 	}
 	game.c = 1;
 	game.year += yearResult;
+	lookahead = yylex();
 	}
 	return game;
 }
