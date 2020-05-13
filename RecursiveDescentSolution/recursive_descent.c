@@ -40,6 +40,7 @@ struct counter gamelist(){
 	gamelistResult.c = 0;
 	gamelistResult.year = 0;
 	while (yylex() == SPORT){
+		printf("SPORT ");
 		gameResult = game();
 		gamelistResult.c += gameResult.c;
 		gamelistResult.year += gameResult.year;
@@ -49,9 +50,12 @@ struct counter gamelist(){
 struct counter game(){
 	//match(SPORT);
 	match(SPORT_NAME);
+	printf("SPORT_NAME ");
 	char sportName[30];
 	strcpy(sportName, yytext);
 	match(YEARS);
+	printf("YEARS ");
+
 	// printf("!!!!!!!!!!!!!!!!!!!!!!! %s", yylex());
 	int yearResult = yearExp(yylex());
 	if(yearResult >= 7){
@@ -66,15 +70,19 @@ struct counter game(){
 int yearExp(int currentToken)
 {
 	if(yylex() == COMMA ){
+		printf("COMMA ");
 		return yearExp(currentToken) + yearExp(yylex());
 	}
 	else if(currentToken == SINCE){
+		printf("SINCE ");
 		return ((2016 - yylex())/4)+1;
 	}
 	else if (currentToken == ALL){
+		printf("SPORT_NAME");
 		return ((2016-1896)/4)+1;
 	}
 	else if (yylex() == THROUGH){
+		printf("THROUGH");
 		return ((yylex() - currentToken)/4)+1;
 	}
 	else{
