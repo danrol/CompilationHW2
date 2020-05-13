@@ -3,15 +3,15 @@
 // yylex returns 0 when EOF is encountered
 enum token {
      TITLE =1, 
-     SPORT,
-     YEARS,
-     COMMA,
-     THROUGH,
-     SINCE,
-     ALL, 
-     NEWLINE,
-     YEAR_NUM,
-     SPORT_NAME    
+     SPORT, //2
+     YEARS, //3
+     COMMA, //4 
+     THROUGH, //5
+     SINCE, //6
+     ALL, //7
+     NEWLINE, //8
+     YEAR_NUM, //9
+     SPORT_NAME //10 
 };
 
 char *token_name(enum token token);

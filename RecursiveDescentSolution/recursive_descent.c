@@ -27,7 +27,7 @@ int lookahead;
 
 void line(){
 	match(TITLE);
-	match(NEWLINE);
+	// match(NEWLINE);
 	struct counter result = gamelist();
 	double avg = (double)result.year/(double)result.c;
 	printf("\naverage number of games per sport:%7.2f\n", avg);
@@ -98,6 +98,12 @@ void match(int expectedToken)
 	{
 		char e[100]; /* todo: error message should mention name of token
                    (not its number) */
+		if (!lookahead){
+			printf("!!!!! inside else and lookahead is null ");
+			printf("%d ", lookahead);
+		}
+		printf("expected token is %d ", expectedToken);
+		printf("but received lookahead token = %d ", lookahead);
 		// sprintf(e, "error: expected token %s, found token %s",
 		// 		token_name(expectedToken), token_name(lookahead));
 		printf("problem with tokens");
@@ -108,12 +114,12 @@ void match(int expectedToken)
 
 void parse()
 {
-	// lookahead = yylex();
+	lookahead = yylex();
 	line();
 	if (lookahead != 0)
 	{ // 0 means EOF
-
-		errorMsg("EOF expected %d", lookahead);
+		printf("error lookahead = %d \n", lookahead);
+		errorMsg("EOF expected");
 		exit(1);
 	}
 }
