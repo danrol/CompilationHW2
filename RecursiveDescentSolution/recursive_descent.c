@@ -32,7 +32,7 @@ void line(){
 	struct counter result = gamelist();
 	printf("result.year = %d, result.c = %d \n", result.year, result.c);
 	double avg = (double)result.year/(double)result.c;
-	printf("\n average number of games per sport:%7.2f\n", avg);
+	printf("\naverage number of games per sport:%7.2f\n", avg);
 }
 
 struct counter gamelist(){
@@ -73,7 +73,7 @@ struct counter game(){
 
 int yearExp(int currentToken)
 {
-	printf("beginning of yearExp\n");
+	printf("beginning of yearExp with current token = %d\n", currentToken);
 	if(yylex() == COMMA ){
 		printf("COMMA ");
 		return yearExp(currentToken) + yearExp(yylex());
