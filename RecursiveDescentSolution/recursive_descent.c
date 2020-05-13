@@ -82,7 +82,7 @@ int yearExp(int currentToken)
 	int nextToken = yylex();
 	printf("beginning of yearExp with current token = %d and next token = %d\n", currentToken, nextToken);
 	int result;
-	if (nextToken == COMMA)
+	if (currentToken == COMMA)
 	{
 		printf("COMMA ");
 		// result = yearExp(currentToken) + yearExp(yylex());
@@ -105,9 +105,9 @@ int yearExp(int currentToken)
 	else if (nextToken == THROUGH)
 	{
 		printf("THROUGH ");
-		result = ((yylex() - currentToken)/4)+1;
+		result = ((nextToken - currentToken)/4)+1;
 		printf("yearExp result = %d", result);
-		return ((yylex() - currentToken)/4)+1;
+		return result;
 	}
 	else{
 		//TODO deal with other
