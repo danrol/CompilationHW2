@@ -83,7 +83,7 @@ int yearExp(int currentToken)
 	}
 	else if(currentToken == SINCE){
 		printf("SINCE ");
-		result = ((2016 - yylex()) / 4) + 1;
+		result = ((2016 - yearExp(yylex())) / 4) + 1;
 		printf("yearExp result = %d", result);
 		return result;
 	}
@@ -95,9 +95,9 @@ int yearExp(int currentToken)
 	}
 	else if (yylex() == THROUGH){
 		printf("THROUGH ");
-		result = ((yylex() - currentToken) / 4) + 1;
+		result = ((yearExp(yylex()) - currentToken) / 4) + 1;
 		printf("yearExp result = %d", result);
-		return ((yylex() - currentToken)/4)+1;
+		return ((yearExp(yylex()) - currentToken) / 4) + 1;
 	}
 	else{
 		//TODO deal with other
