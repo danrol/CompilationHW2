@@ -83,9 +83,7 @@ int yearExp(int currentToken)
 	strcpy(currentTokenValue, yytext);
 	char nextTokenValue[30];
 	
-	int nextToken = yylex();
-	strcpy(nextTokenValue, yytext);
-	printf("beginning of yearExp with current token = %d and next token = %d\n", currentToken, nextToken);
+	printf("beginning of yearExp with current token = %d", currentToken);
 	int result;
 
 	if (currentToken == COMMA)
@@ -96,7 +94,10 @@ int yearExp(int currentToken)
 		// printf("yearExp result = %d", result);
 		return result;
 	}
-	else if(currentToken == SINCE){
+	int nextToken = yylex();
+	printf(" next token = %d", nextToken);
+	strcpy(nextTokenValue, yytext);
+	if(currentToken == SINCE){
 		printf("SINCE ");
 		result = ((2016 - atoi(nextTokenValue)) / 4) + 1;
 		printf("yearExp result = %d ", result);
