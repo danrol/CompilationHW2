@@ -89,10 +89,8 @@ union YYSTYPE
 	int avr;
 	char oname[30];
 	struct counter count;
-	
 
-
-#line 96 "submission.tab.h"
+#line 94 "submission.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

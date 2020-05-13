@@ -171,10 +171,8 @@ union YYSTYPE
 	int avr;
 	char oname[30];
 	struct counter count;
-	
 
-
-#line 178 "submission.tab.cpp"
+#line 176 "submission.tab.cpp"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -550,7 +548,7 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    60,    60,    67,    69,    93,   103,   104,   105,   106,
+       0,    57,    57,    65,    67,    93,   103,   104,   105,   106,
      107
 };
 #endif
@@ -1345,24 +1343,27 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 61 "submission.y"
+#line 58 "submission.y"
 {
+printf("year = %d, c = %d", (yyvsp[0].count).year, (yyvsp[0].count).c);
 double avg=(double)(yyvsp[0].count).year/(double)(yyvsp[0].count).c;
 //printf("the sum is %d\n",$3.year);
 printf("\naverage number of games per sport:%7.2f\n",avg);
 }
-#line 1355 "submission.tab.cpp"
+#line 1354 "submission.tab.cpp"
     break;
 
   case 3:
-#line 67 "submission.y"
+#line 65 "submission.y"
                      {}
-#line 1361 "submission.tab.cpp"
+#line 1360 "submission.tab.cpp"
     break;
 
   case 4:
-#line 70 "submission.y"
+#line 68 "submission.y"
 {
+
+	//TODO deal with negative memory
 	if((yyval.count).c<0)
 	{
 		(yyval.count).c=1;
@@ -1384,7 +1385,7 @@ printf("\naverage number of games per sport:%7.2f\n",avg);
 //printf("%d\n" , $$.year);
 
 }
-#line 1388 "submission.tab.cpp"
+#line 1389 "submission.tab.cpp"
     break;
 
   case 5:
@@ -1397,41 +1398,41 @@ printf("\naverage number of games per sport:%7.2f\n",avg);
  (yyval.count).year=(yyvsp[0].year);
 
  }
-#line 1401 "submission.tab.cpp"
+#line 1402 "submission.tab.cpp"
     break;
 
   case 6:
 #line 103 "submission.y"
                    {if((yyval.year) != 2020)(yyval.year)= 1; else (yyval.year) = 0; }
-#line 1407 "submission.tab.cpp"
+#line 1408 "submission.tab.cpp"
     break;
 
   case 7:
 #line 104 "submission.y"
                                  {(yyval.year) = (yyvsp[-2].year) + (yyvsp[0].year);}
-#line 1413 "submission.tab.cpp"
+#line 1414 "submission.tab.cpp"
     break;
 
   case 8:
 #line 105 "submission.y"
                         { (yyval.year) = ((2016-(yyvsp[0].year))/4)+1;}
-#line 1419 "submission.tab.cpp"
+#line 1420 "submission.tab.cpp"
     break;
 
   case 9:
 #line 106 "submission.y"
              { (yyval.year) = ((2016-1896)/4)+1;  }
-#line 1425 "submission.tab.cpp"
+#line 1426 "submission.tab.cpp"
     break;
 
   case 10:
 #line 107 "submission.y"
                                    {(yyval.year) = (((yyvsp[0].year)-(yyvsp[-2].year))/4)+1;}
-#line 1431 "submission.tab.cpp"
+#line 1432 "submission.tab.cpp"
     break;
 
 
-#line 1435 "submission.tab.cpp"
+#line 1436 "submission.tab.cpp"
 
       default: break;
     }
@@ -1663,7 +1664,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 112 "submission.y"
+#line 110 "submission.y"
 
 int main (int argc, char **argv)
 {

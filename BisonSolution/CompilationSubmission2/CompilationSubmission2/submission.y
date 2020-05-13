@@ -56,6 +56,7 @@
 %% 
 line: TITLE NEWLINE gamelist
 {
+printf("year = %d, c = %d", $3.year, $3.c);
 double avg=(double)$3.year/(double)$3.c;
 //printf("the sum is %d\n",$3.year);
 printf("\naverage number of games per sport:%7.2f\n",avg);
