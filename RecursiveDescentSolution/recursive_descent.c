@@ -93,20 +93,20 @@ int yearExp(int currentToken)
 	else if(currentToken == SINCE){
 		printf("SINCE ");
 		result = ((2016 - nextToken) / 4) + 1;
-		printf("yearExp result = %d", result);
+		printf("yearExp result = %d ", result);
 		return result;
 	}
 	else if (currentToken == ALL){
 		printf("ALL ");
 		result = ((2016 - 1896) / 4) + 1;
-		printf("yearExp result = %d", result);
+		printf("yearExp result = %d ", result);
 		return result;
 	}
 	else if (nextToken == THROUGH)
 	{
 		printf("THROUGH ");
 		result = ((nextToken - currentToken)/4)+1;
-		printf("yearExp result = %d", result);
+		printf("yearExp result = %d ", result);
 		return result;
 	}
 	else{
