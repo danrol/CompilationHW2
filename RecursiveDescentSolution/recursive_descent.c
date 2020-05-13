@@ -42,7 +42,7 @@ struct counter gamelist(){
 	gamelistResult.year = 0;
 	printf("lookahead before yylex = %d\n", lookahead);
 	while (lookahead == SPORT){
-		printf("SPORT ");
+		printf("\n\nSPORT ");
 		lookahead = yylex();
 		gameResult = game();
 		gamelistResult.c += gameResult.c;
@@ -62,7 +62,7 @@ struct counter game(){
 	struct counter game;
 
 	// printf("!!!!!!!!!!!!!!!!!!!!!!! %s", yylex());
-	while(lookahead != SPORT ){
+	while(lookahead != SPORT && lookahead != 0){
 	int yearResult = yearExp(lookahead);
 	if(yearResult >= 7){
 		printf("%s\n", sportName);
