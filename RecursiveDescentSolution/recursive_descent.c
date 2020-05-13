@@ -46,7 +46,7 @@ struct counter gamelist(){
 }
 
 struct counter game(){
-	match(SPORT);
+	//match(SPORT);
 	match(SPORT_NAME);
 	char sportName[30];
 	strcpy(sportName, yytext);
