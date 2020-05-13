@@ -118,6 +118,7 @@ int yearExp(int currentToken)
 	}
 	else{
 		//TODO deal with other
+		printf("\n entered else in year_exp\n");
 	}
 
 	if (currentToken == YEAR_NUM){
