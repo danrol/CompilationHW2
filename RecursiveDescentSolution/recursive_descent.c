@@ -74,20 +74,29 @@ struct counter game(){
 int yearExp(int currentToken)
 {
 	printf("beginning of yearExp with current token = %d\n", currentToken);
+	int result;
 	if(yylex() == COMMA ){
 		printf("COMMA ");
-		return yearExp(currentToken) + yearExp(yylex());
+		result = yearExp(currentToken) + yearExp(yylex());
+		printf("yearExp result = %d", result);
+		return result;
 	}
 	else if(currentToken == SINCE){
 		printf("SINCE ");
-		return ((2016 - yylex())/4)+1;
+		result = ((2016 - yylex()) / 4) + 1;
+		printf("yearExp result = %d", result);
+		return result;
 	}
 	else if (currentToken == ALL){
-		printf("SPORT_NAME");
-		return ((2016-1896)/4)+1;
+		printf("ALL ");
+		result = ((2016 - 1896) / 4) + 1;
+		printf("yearExp result = %d", result);
+		return result;
 	}
 	else if (yylex() == THROUGH){
-		printf("THROUGH");
+		printf("THROUGH ");
+		result = ((yylex() - currentToken) / 4) + 1;
+		printf("yearExp result = %d", result);
 		return ((yylex() - currentToken)/4)+1;
 	}
 	else{
