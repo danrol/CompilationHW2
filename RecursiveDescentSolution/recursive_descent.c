@@ -52,6 +52,7 @@ struct counter gamelist(){
 		lineCounter++;
 		// lookahead = yylex();
 	}
+	return gamelistResult;
 }
 
 struct counter game(){
@@ -123,8 +124,8 @@ int yearExp(int currentToken)
 	}
 	else if (currentToken == YEAR_NUM)
 	{
-		int year_num = atoi(yytext);
-		printf("YEAR_NUM ");
+		int year_num = atoi(currentTokenValue);
+		printf("YEAR_NUM and year_num = %d ", year_num);
 		if (year_num != 2020)
 		{
 			printf("year num returns 1 \n");
