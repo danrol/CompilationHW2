@@ -39,11 +39,14 @@ struct counter gamelist(){
 	struct counter gamelistResult;
 	gamelistResult.c = 0;
 	gamelistResult.year = 0;
-	while (yylex() == SPORT){
+	lookahead = yylex();
+	printf("lookahead before yylex = %d", lookahead);
+	while (lookahead == SPORT){
 		printf("SPORT ");
 		gameResult = game();
 		gamelistResult.c += gameResult.c;
 		gamelistResult.year += gameResult.year;
+		lookahead = yylex();
 	}
 }
 
@@ -69,7 +72,7 @@ struct counter game(){
 
 int yearExp(int currentToken)
 {
-	printf("beginning of yearExp")
+	printf("beginning of yearExp");
 	if(yylex() == COMMA ){
 		printf("COMMA ");
 		return yearExp(currentToken) + yearExp(yylex());
