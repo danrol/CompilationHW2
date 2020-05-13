@@ -11,19 +11,7 @@ struct counter gamelist();
 int yearExp(int currentToken);
 void match(int expectedToken);
 void parse();
-// void start();
 int lookahead;
-
-// void start()
-// {
-// 	line();
-// 		match() struct time t = songlist();
-// 	if (t.minutes == -1)
-// 		printf("no relevant song\n");
-// 	else
-// 		printf("time for shortest relevant song: %d:%.2d\n",
-// 			   t.minutes, t.seconds);
-// }
 
 void line(){
 	match(TITLE);
@@ -50,24 +38,21 @@ struct counter gamelist(){
 		printf("line #%d gameResult.c = %d, gameResult.year = %d\n", lineCounter, gameResult.year, gameResult.c);
 		gamelistResult.year += gameResult.year;
 		lineCounter++;
-		// lookahead = yylex();
 	}
 	return gamelistResult;
 }
 
 struct counter game(){
-	//match(SPORT);
-	match(SPORT_NAME);
-	printf("SPORT_NAME ");
 	char sportName[30];
 	strcpy(sportName, yytext);
+	match(SPORT_NAME);
+	printf("SPORT_NAME ");
 	match(YEARS);
 	printf("YEARS ");
 	struct counter game;
 	game.c = 1;
 	game.year = 0;
 
-		// printf("!!!!!!!!!!!!!!!!!!!!!!! %s", yylex());
 		while (lookahead != SPORT && lookahead != 0)
 	{
 		int yearResult = yearExp(lookahead);
@@ -93,9 +78,7 @@ int yearExp(int currentToken)
 	if (currentToken == COMMA)
 	{
 		printf("COMMA ");
-		// result = yearExp(currentToken) + yearExp(yylex());
 		result = 0;
-		// printf("yearExp result = %d", result);
 		return result;
 	}
 	else if (currentToken == ALL)
@@ -138,7 +121,6 @@ int yearExp(int currentToken)
 		}
 	}
 	else{
-		//TODO deal with other
 		printf("\n entered else in year_exp\n");
 	}
 }
@@ -157,10 +139,6 @@ void match(int expectedToken)
 		}
 		printf("expected token is %d ", expectedToken);
 		printf("but received lookahead token = %d ", lookahead);
-		// sprintf(e, "error: expected token %s, found token %s",
-		// 		token_name(expectedToken), token_name(lookahead));
-		printf("problem with tokens");
-		// errorMsg(e);
 		exit(1);
 	}
 }
@@ -192,9 +170,6 @@ int main(int argc, char **argv)
 		fprintf(stderr, "failed to open %s\n", argv[1]);
 		return 2;
 	}
-
-	// yyin = fopen("input.txt", "r");
-	// printf("sports which appeared in at least 7 olympic games:\n");
 
 	parse();
 
