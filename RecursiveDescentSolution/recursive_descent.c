@@ -5,13 +5,25 @@
 
 extern enum token yylex(void);
 extern char* yytext;
+void line();
 struct counter game();
 struct counter gamelist();
 int yearExp(int currentToken);
-void start();
-void match();
+void match(int expectedToken);
+void parse();
+// void start();
 int lookahead;
 
+// void start()
+// {
+// 	line();
+// 		match() struct time t = songlist();
+// 	if (t.minutes == -1)
+// 		printf("no relevant song\n");
+// 	else
+// 		printf("time for shortest relevant song: %d:%.2d\n",
+// 			   t.minutes, t.seconds);
+// }
 
 void line(){
 	match(TITLE);
@@ -39,7 +51,7 @@ struct counter game(){
 	char sportName[30];
 	strcpy(sportName, yytext);
 	match(YEARS);
-	printf("%s", yylex());
+	// printf("!!!!!!!!!!!!!!!!!!!!!!! %s", yylex());
 	int yearResult = yearExp(yylex());
 	if(yearResult >= 7){
 		printf("%s\n", sportName);
@@ -86,9 +98,10 @@ void match(int expectedToken)
 	{
 		char e[100]; /* todo: error message should mention name of token
                    (not its number) */
-		sprintf(e, "error: expected token %s, found token %s",
-				token_name(expectedToken), token_name(lookahead));
-		errorMsg(e);
+		// sprintf(e, "error: expected token %s, found token %s",
+		// 		token_name(expectedToken), token_name(lookahead));
+		printf("problem with tokens");
+		// errorMsg(e);
 		exit(1);
 	}
 }
@@ -96,7 +109,7 @@ void match(int expectedToken)
 void parse()
 {
 	lookahead = yylex();
-	start();
+	line();
 	if (lookahead != 0)
 	{ // 0 means EOF
 		errorMsg("EOF expected");
@@ -107,21 +120,21 @@ void parse()
 int main(int argc, char **argv)
 {
 	extern FILE *yyin;
-	// if (argc != 2)
-	// {
-	// 	fprintf(stderr, "Usage: %s <input-file-name>\n", argv[0]);
-	// 	return 1;
-	// }
+	if (argc != 2)
+	{
+		fprintf(stderr, "Usage: %s <input-file-name>\n", argv[0]);
+		return 1;
+	}
 
-	// yyin = fopen(argv[1], "r");
-	// if (yyin == NULL)
-	// {
-	// 	fprintf(stderr, "failed to open %s\n", argv[1]);
-	// 	return 2;
-	// }
+	yyin = fopen(argv[1], "r");
+	if (yyin == NULL)
+	{
+		fprintf(stderr, "failed to open %s\n", argv[1]);
+		return 2;
+	}
 
-	yyin = fopen("input.txt", "r");
-	printf("sports which appeared in at least 7 olympic games:\n");
+	// yyin = fopen("input.txt", "r");
+	// printf("sports which appeared in at least 7 olympic games:\n");
 
 	parse();
 
