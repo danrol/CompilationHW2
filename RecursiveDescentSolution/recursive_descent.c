@@ -81,8 +81,9 @@ int yearExp(int currentToken)
 	if (nextToken == COMMA)
 	{
 		printf("COMMA ");
-		result = yearExp(currentToken) + yearExp(yylex());
-		printf("yearExp result = %d", result);
+		// result = yearExp(currentToken) + yearExp(yylex());
+		result = 0;
+		// printf("yearExp result = %d", result);
 		return result;
 	}
 	else if(currentToken == SINCE){
