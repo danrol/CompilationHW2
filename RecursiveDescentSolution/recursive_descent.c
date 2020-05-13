@@ -29,7 +29,7 @@ void line(){
 	match(TITLE);
 	// match(NEWLINE);
 	struct counter result = gamelist();
-	printf("result.year = %d, result.c = %d", result.year, result.c);
+	printf("result.year = %d, result.c = %d \n", result.year, result.c);
 	double avg = (double)result.year/(double)result.c;
 	printf("\naverage number of games per sport:%7.2f\n", avg);
 }
