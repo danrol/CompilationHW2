@@ -39,14 +39,11 @@
 	int avr;
 	char oname[30];
 	struct counter count;
-	
-
 }
 
 
 // define the "terminal symbol" token types I'm going to use (in CAPS 
 // by convention), and associate each with a field of the union: 
-
 %token SPORT  TITLE YEARS COMMA THROUGH SINCE ALL NEWLINE 
 %token <year> YEAR_NUM  
 %type <year> year_exp
@@ -107,8 +104,6 @@ year_exp:year_exp COMMA year_exp {$$ = $1 + $3;}
 year_exp:SINCE YEAR_NUM { $$ = ((2016-$2)/4)+1;}
 year_exp:ALL { $$ = ((2016-1896)/4)+1;  } 
 year_exp:YEAR_NUM THROUGH YEAR_NUM {$$ = (($3-$1)/4)+1;}
-
-
 
 
 %%

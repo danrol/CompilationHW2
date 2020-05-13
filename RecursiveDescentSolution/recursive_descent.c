@@ -34,7 +34,7 @@ struct counter gamelist(){
 struct counter game(){
 	match(SPORT);
 	match(SPORT_NAME);
-	char sportName = yytext;
+	char sportName[] = yytext;
 	match(YEARS);
 	int yearResult = yearExp(yylex());
 	if(yearResult >= 7){
@@ -105,17 +105,21 @@ void parse()
 int main(int argc, char **argv)
 {
 	extern FILE *yyin;
-	if (argc != 2)
-	{
-		fprintf(stderr, "Usage: %s <input-file-name>\n", argv[0]);
-		return 1;
-	}
-	yyin = fopen(argv[1], "r");
-	if (yyin == NULL)
-	{
-		fprintf(stderr, "failed to open %s\n", argv[1]);
-		return 2;
-	}
+	// if (argc != 2)
+	// {
+	// 	fprintf(stderr, "Usage: %s <input-file-name>\n", argv[0]);
+	// 	return 1;
+	// }
+
+	// yyin = fopen(argv[1], "r");
+	// if (yyin == NULL)
+	// {
+	// 	fprintf(stderr, "failed to open %s\n", argv[1]);
+	// 	return 2;
+	// }
+
+	yyin = fopen("input.txt", "r");
+	printf("sports which appeared in at least 7 olympic games:\n");
 
 	parse();
 
