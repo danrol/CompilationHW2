@@ -27,6 +27,7 @@ int lookahead;
 
 void line(){
 	match(TITLE);
+	printf("TITLE \n ");
 	// match(NEWLINE);
 	struct counter result = gamelist();
 	printf("result.year = %d, result.c = %d \n", result.year, result.c);
@@ -39,14 +40,14 @@ struct counter gamelist(){
 	struct counter gamelistResult;
 	gamelistResult.c = 0;
 	gamelistResult.year = 0;
-	lookahead = yylex();
-	printf("lookahead before yylex = %d", lookahead);
+	printf("lookahead before yylex = %d\n", lookahead);
 	while (lookahead == SPORT){
 		printf("SPORT ");
+		lookahead = yylex();
 		gameResult = game();
 		gamelistResult.c += gameResult.c;
 		gamelistResult.year += gameResult.year;
-		lookahead = yylex();
+		// lookahead = yylex();
 	}
 }
 
@@ -72,7 +73,7 @@ struct counter game(){
 
 int yearExp(int currentToken)
 {
-	printf("beginning of yearExp");
+	printf("beginning of yearExp\n");
 	if(yylex() == COMMA ){
 		printf("COMMA ");
 		return yearExp(currentToken) + yearExp(yylex());
