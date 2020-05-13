@@ -7,6 +7,7 @@ extern enum token yylex(void);
 extern char* yytext;
 struct counter game();
 struct counter gamelist();
+int yearExp(int currentToken);
 void start();
 void match();
 int lookahead;
@@ -38,6 +39,7 @@ struct counter game(){
 	char sportName[30];
 	strcpy(sportName, yytext);
 	match(YEARS);
+	printf("%s", yylex());
 	int yearResult = yearExp(yylex());
 	if(yearResult >= 7){
 		printf("%s\n", sportName);
@@ -48,10 +50,7 @@ struct counter game(){
 	return game;
 }
 
-
-int yearExp(int currentToken);
-
-	int yearExp(int currentToken)
+int yearExp(int currentToken)
 {
 	if(yylex() == COMMA ){
 		return yearExp(currentToken) + yearExp(yylex());
@@ -78,6 +77,7 @@ int yearExp(int currentToken);
 		}
 	}
 }
+
 void match(int expectedToken)
 {
 	if (lookahead == expectedToken)
