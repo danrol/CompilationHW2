@@ -108,11 +108,12 @@ void match(int expectedToken)
 
 void parse()
 {
-	lookahead = yylex();
+	// lookahead = yylex();
 	line();
 	if (lookahead != 0)
 	{ // 0 means EOF
-		errorMsg("EOF expected");
+
+		errorMsg("EOF expected %d", lookahead);
 		exit(1);
 	}
 }
