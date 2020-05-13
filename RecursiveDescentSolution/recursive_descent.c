@@ -116,22 +116,24 @@ int yearExp(int currentToken)
 		printf("yearExp result = %d ", result);
 		return result;
 	}
-	else{
-		//TODO deal with other
-		printf("\n entered else in year_exp\n");
-	}
-
-	if (currentToken == YEAR_NUM){
+	else if (currentToken == YEAR_NUM)
+	{
 		int year_num = atoi(yytext);
 		printf("YEAR_NUM ");
-		if (year_num != 2020){
+		if (year_num != 2020)
+		{
 			printf("year num returns 1 \n");
 			return 1;
 		}
-		else{
+		else
+		{
 			printf("year num returns 0 \n");
 			return 0;
 		}
+	}
+	else{
+		//TODO deal with other
+		printf("\n entered else in year_exp\n");
 	}
 }
 
