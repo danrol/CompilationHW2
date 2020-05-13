@@ -114,6 +114,7 @@ int yearExp(int currentToken)
 	}
 	if (currentToken == YEAR_NUM){
 		int year_num = atoi(yytext);
+		printf("YEAR_NUM");
 		if (year_num != 2020){
 			printf("year num returns 1 \n");
 			return 1;
