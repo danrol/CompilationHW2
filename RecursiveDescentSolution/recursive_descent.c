@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "recursive_descent.h"
 
 extern enum token yylex(void);
-extern enum token yytext[];
+extern char* yytext;
 struct counter game();
 struct counter gamelist();
 void start();
@@ -34,7 +35,8 @@ struct counter gamelist(){
 struct counter game(){
 	match(SPORT);
 	match(SPORT_NAME);
-	char sportName[] = yytext;
+	char sportName[30];
+	strcpy(sportName, yytext);
 	match(YEARS);
 	int yearResult = yearExp(yylex());
 	if(yearResult >= 7){
