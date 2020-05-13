@@ -373,8 +373,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 17
-#define YY_END_OF_BUFFER 18
+#define YY_NUM_RULES 16
+#define YY_END_OF_BUFFER 17
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -384,13 +384,13 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[65] =
     {   0,
-        5,    5,    0,    0,   18,   16,   11,    1,   16,    7,
-        8,   16,   16,   16,   16,   16,   16,   16,   16,   14,
-       15,   11,    4,    0,   13,    0,    0,    0,    0,    0,
-        5,    0,    0,    0,   14,    0,    0,    0,    0,    0,
-        0,    0,    5,    0,   10,    0,    0,    0,    6,    0,
-        0,    0,    0,    0,    0,    9,    0,    0,    0,    0,
-        2,    3,    8,    0
+        4,    4,    0,    0,   17,   15,   10,   11,   15,    6,
+        7,   15,   15,   15,   15,   15,   15,   15,   15,   13,
+       14,   10,    3,    0,   12,    0,    0,    0,    0,    0,
+        4,    0,    0,    0,   13,    0,    0,    0,    0,    0,
+        0,    0,    4,    0,    9,    0,    0,    0,    5,    0,
+        0,    0,    0,    0,    0,    8,    0,    0,    0,    0,
+        1,    2,    7,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -494,9 +494,9 @@ static const flex_int16_t yy_chk[134] =
     } ;
 
 /* Table of booleans, true if rule could match eol. */
-static const flex_int32_t yy_rule_can_match_eol[18] =
+static const flex_int32_t yy_rule_can_match_eol[17] =
     {   0,
-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0,     };
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0,     };
 
 static yy_state_type yy_last_accepting_state;
 static char *yy_last_accepting_cpos;
@@ -750,8 +750,7 @@ YY_DECL
 #line 23 "recursive_descent.l"
 
 
-
-#line 754 "lex.yy.c"
+#line 753 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -819,97 +818,91 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
-/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 26 "recursive_descent.l"
-{return NEWLINE; }
+#line 25 "recursive_descent.l"
+{ return SPORT; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 27 "recursive_descent.l"
-{ return SPORT; }
+{ return YEARS; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 29 "recursive_descent.l"
-{ return YEARS; }
-	YY_BREAK
-case 4:
-YY_RULE_SETUP
-#line 31 "recursive_descent.l"
 { strcpy(lexicalValue._counter.cname , yytext+1); 
 lexicalValue._counter.cname[strlen(yytext)-2] = '\0';
 return SPORT_NAME; }
 	YY_BREAK
+case 4:
+YY_RULE_SETUP
+#line 33 "recursive_descent.l"
+{  return TITLE; }
+	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 35 "recursive_descent.l"
-{  return TITLE; }
+{  lexicalValue._counter.year = atoi(yytext); return YEAR_NUM; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 37 "recursive_descent.l"
-{  lexicalValue._counter.year = atoi(yytext); return YEAR_NUM; }
+{ return COMMA; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 39 "recursive_descent.l"
-{ return COMMA; }
+{return THROUGH; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 41 "recursive_descent.l"
-{return THROUGH; }
+{return SINCE; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 43 "recursive_descent.l"
-{return SINCE; }
+{return ALL; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 45 "recursive_descent.l"
-{return ALL; }
-	YY_BREAK
-case 11:
-YY_RULE_SETUP
-#line 48 "recursive_descent.l"
+#line 46 "recursive_descent.l"
 /* skip white space */
 	YY_BREAK
+case 11:
+/* rule 11 can match eol */
+YY_RULE_SETUP
+#line 48 "recursive_descent.l"
+{ }
+	YY_BREAK
 case 12:
-/* rule 12 can match eol */
 YY_RULE_SETUP
 #line 50 "recursive_descent.l"
-{ }
+{ BEGIN (COMMENT); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 52 "recursive_descent.l"
-{ BEGIN (COMMENT); }
-	YY_BREAK
-case 14:
-YY_RULE_SETUP
-#line 54 "recursive_descent.l"
 /* skip comment */
 	YY_BREAK
-case 15:
-/* rule 15 can match eol */
+case 14:
+/* rule 14 can match eol */
 YY_RULE_SETUP
-#line 55 "recursive_descent.l"
+#line 53 "recursive_descent.l"
 {  /* end of comment --> resume normal processing */
                 BEGIN (0); }
+	YY_BREAK
+case 15:
+YY_RULE_SETUP
+#line 56 "recursive_descent.l"
+{ fprintf (stderr, "unrecognized token %c on line %d \n", yytext[0], yylineno); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 58 "recursive_descent.l"
-{ fprintf (stderr, "unrecognized token %c on line %d \n", yytext[0], yylineno); }
-	YY_BREAK
-case 17:
-YY_RULE_SETUP
-#line 60 "recursive_descent.l"
 ECHO;
 	YY_BREAK
-#line 912 "lex.yy.c"
+#line 905 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 	yyterminate();
@@ -1927,6 +1920,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 60 "recursive_descent.l"
+#line 58 "recursive_descent.l"
 
 

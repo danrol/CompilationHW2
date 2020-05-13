@@ -38,7 +38,7 @@ struct counter gamelist(){
 	struct counter gamelistResult;
 	gamelistResult.c = 0;
 	gamelistResult.year = 0;
-	while (yylex() == NEWLINE){
+	while (yylex() == SPORT){
 		gameResult = game();
 		gamelistResult.c += gameResult.c;
 		gamelistResult.year += gameResult.year;

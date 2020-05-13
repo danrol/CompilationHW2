@@ -22,8 +22,6 @@ union _lexVal lexicalValue; // semantic value of current token
 
 %%
 
-
-"\n" {return NEWLINE; }
 "<sport>"  { return SPORT; }
 
 "<years>" { return YEARS; }
