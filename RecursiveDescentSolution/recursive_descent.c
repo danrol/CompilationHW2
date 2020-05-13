@@ -59,23 +59,27 @@ struct counter game(){
 	strcpy(sportName, yytext);
 	match(YEARS);
 	printf("YEARS ");
+	struct counter game;
 
 	// printf("!!!!!!!!!!!!!!!!!!!!!!! %s", yylex());
+	while(lookahead != SPORT ){
 	int yearResult = yearExp(lookahead);
 	if(yearResult >= 7){
 		printf("%s\n", sportName);
 	}
-	struct counter game;
 	game.c = 1;
-	game.year = yearResult;
+	game.year += yearResult;
+	}
 	return game;
 }
 
 int yearExp(int currentToken)
-{
-	printf("beginning of yearExp with current token = %d\n", currentToken);
+{	
+	int nextToken = yylex();
+	printf("beginning of yearExp with current token = %d and next token = %d\n", currentToken, nextToken);
 	int result;
-	if(yylex() == COMMA ){
+	if (nextToken == COMMA)
+	{
 		printf("COMMA ");
 		result = yearExp(currentToken) + yearExp(yylex());
 		printf("yearExp result = %d", result);
@@ -83,7 +87,7 @@ int yearExp(int currentToken)
 	}
 	else if(currentToken == SINCE){
 		printf("SINCE ");
-		result = ((2016 - yearExp(yylex())) / 4) + 1;
+		result = ((2016 - nextToken) / 4) + 1;
 		printf("yearExp result = %d", result);
 		return result;
 	}
@@ -93,11 +97,12 @@ int yearExp(int currentToken)
 		printf("yearExp result = %d", result);
 		return result;
 	}
-	else if (yylex() == THROUGH){
+	else if (nextToken == THROUGH)
+	{
 		printf("THROUGH ");
-		result = ((yearExp(yylex()) - currentToken) / 4) + 1;
+		result = ((yylex() - currentToken)/4)+1;
 		printf("yearExp result = %d", result);
-		return ((yearExp(yylex()) - currentToken) / 4) + 1;
+		return ((yylex() - currentToken)/4)+1;
 	}
 	else{
 		//TODO deal with other
