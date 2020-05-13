@@ -69,6 +69,7 @@ struct counter game(){
 
 int yearExp(int currentToken)
 {
+	printf("beginning of yearExp")
 	if(yylex() == COMMA ){
 		printf("COMMA ");
 		return yearExp(currentToken) + yearExp(yylex());
