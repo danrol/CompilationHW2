@@ -78,8 +78,13 @@ struct counter game(){
 }
 
 int yearExp(int currentToken)
-{	
+{
+	char currentTokenValue[30];
+	strcpy(currentTokenValue, yytext);
+	char nextTokenValue[30];
+	
 	int nextToken = yylex();
+	strcpy(nextTokenValue, yytext);
 	printf("beginning of yearExp with current token = %d and next token = %d\n", currentToken, nextToken);
 	int result;
 	if (currentToken == COMMA)
@@ -92,7 +97,7 @@ int yearExp(int currentToken)
 	}
 	else if(currentToken == SINCE){
 		printf("SINCE ");
-		result = ((2016 - nextToken) / 4) + 1;
+		result = ((2016 - atoi(nextTokenValue)) / 4) + 1;
 		printf("yearExp result = %d ", result);
 		return result;
 	}
@@ -105,7 +110,7 @@ int yearExp(int currentToken)
 	else if (nextToken == THROUGH)
 	{
 		printf("THROUGH ");
-		result = ((nextToken - currentToken)/4)+1;
+		result = ((atoi(nextTokenValue) - atoi(currentTokenValue))/4)+1;
 		printf("yearExp result = %d ", result);
 		return result;
 	}
