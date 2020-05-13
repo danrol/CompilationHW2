@@ -60,16 +60,19 @@ struct counter game(){
 	match(YEARS);
 	printf("YEARS ");
 	struct counter game;
-
-	// printf("!!!!!!!!!!!!!!!!!!!!!!! %s", yylex());
-	while(lookahead != SPORT && lookahead != 0){
-	int yearResult = yearExp(lookahead);
-	if(yearResult >= 7){
-		printf("%s\n", sportName);
-	}
 	game.c = 1;
-	game.year += yearResult;
-	lookahead = yylex();
+	game.year = 0;
+
+		// printf("!!!!!!!!!!!!!!!!!!!!!!! %s", yylex());
+		while (lookahead != SPORT && lookahead != 0)
+	{
+		int yearResult = yearExp(lookahead);
+		if (yearResult >= 7)
+		{
+			printf("%s\n", sportName);
+		}
+		game.year += yearResult;
+		lookahead = yylex();
 	}
 	return game;
 }
