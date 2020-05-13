@@ -38,6 +38,7 @@ void line(){
 struct counter gamelist(){
 	struct counter gameResult;
 	struct counter gamelistResult;
+	int lineCounter = 2;
 	gamelistResult.c = 0;
 	gamelistResult.year = 0;
 	printf("lookahead before yylex = %d\n", lookahead);
@@ -46,7 +47,9 @@ struct counter gamelist(){
 		lookahead = yylex();
 		gameResult = game();
 		gamelistResult.c += gameResult.c;
+		printf("line #%d gameResult.c = %d, gameResult.year = %d\n", lineCounter, gameResult.year, gameResult.c);
 		gamelistResult.year += gameResult.year;
+		lineCounter++;
 		// lookahead = yylex();
 	}
 }
