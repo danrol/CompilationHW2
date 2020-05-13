@@ -61,7 +61,7 @@ struct counter game(){
 	printf("YEARS ");
 
 	// printf("!!!!!!!!!!!!!!!!!!!!!!! %s", yylex());
-	int yearResult = yearExp(yylex());
+	int yearResult = yearExp(lookahead);
 	if(yearResult >= 7){
 		printf("%s\n", sportName);
 	}
@@ -96,9 +96,11 @@ int yearExp(int currentToken)
 	if (currentToken == YEAR_NUM){
 		int year_num = atoi(yytext);
 		if (year_num != 2020){
+			printf("year num returns 1 \n");
 			return 1;
 		}
 		else{
+			printf("year num returns 0 \n");
 			return 0;
 		}
 	}
