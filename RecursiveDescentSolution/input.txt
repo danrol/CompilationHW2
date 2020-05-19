@@ -4,6 +4,4 @@ Olympic Sports
 <sport> "BasketBall" <years> since 1936
 <sport> "Tug Of War" <years> 1900 through 1920
 <sport> "Karate" <years> 2020
-<sport> "Shitting" <years> 1992
-<sport> "Gavnoball" <years> all
-<sport> "Archery" <years> 1912-1916, 1920, since 1972
+

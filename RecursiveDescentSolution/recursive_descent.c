@@ -8,7 +8,7 @@ extern char *yytext;
 void line();
 struct counter game();
 struct counter gamelist();
-int yearExp(int currentToken, int *lookahead);
+int yearExp(int currentToken);
 void match(int expectedToken);
 void parse();
 int lookahead;
@@ -16,10 +16,7 @@ int lookahead;
 void line()
 {
 	match(TITLE);
-	printf("TITLE \n ");
-	// match(NEWLINE);
 	struct counter result = gamelist();
-	printf("result.year = %d, result.c = %d \n", result.year, result.c);
 	double avg = (double)result.year / (double)result.c;
 	printf("\naverage number of games per sport:%7.2f\n", avg);
 }
@@ -31,14 +28,11 @@ struct counter gamelist()
 	int lineCounter = 2;
 	gamelistResult.c = 0;
 	gamelistResult.year = 0;
-	printf("lookahead before yylex = %d\n", lookahead);
 	while (lookahead == SPORT)
 	{
-		printf("\n\nSPORT ");
 		lookahead = yylex();
 		gameResult = game();
 		gamelistResult.c += gameResult.c;
-		printf("\n\nline #%d gameResult.c = %d, gameResult.year = %d\n", lineCounter, gameResult.year, gameResult.c);
 		gamelistResult.year += gameResult.year;
 		lineCounter++;
 	}
@@ -50,79 +44,64 @@ struct counter game()
 	char sportName[30];
 	strcpy(sportName, yytext);
 	match(SPORT_NAME);
-	printf("SPORT_NAME ");
 	match(YEARS);
-	printf("YEARS ");
 	struct counter game;
 	game.c = 1;
 	game.year = 0;
 
 	while (lookahead != SPORT && lookahead != 0)
 	{
-		int yearResult = yearExp(lookahead, &lookahead);
+		int yearResult = yearExp(lookahead);
 		if (yearResult >= 7)
 		{
 			printf("%s\n", sportName);
 		}
 		game.year += yearResult;
-		// printf("lookahead token at the end of while = %d", lookahead);
 	}
 	return game;
 }
 
-int yearExp(int currentToken, int *lookahead)
+int yearExp(int currentToken)
 {
 	char currentTokenValue[30];
 	strcpy(currentTokenValue, yytext);
 	char nextTokenValue[30];
 
-	printf("beginning of yearExp with current token = %d\n", currentToken);
 	int result;
 	int updateLookahead = 1;
 	int nextToken;
 
-		if (currentToken == COMMA)
+	if (currentToken == COMMA)
 	{
-		printf("COMMA ");
 		result = 0;
 	}
 	else if (currentToken == ALL)
 	{
-		printf("ALL ");
 		result = ((2016 - 1896) / 4) + 1;
-		printf("yearExp result = %d ", result);
 	}
 	else
 	{
 		nextToken = yylex();
-		printf(" next token = %d\n", nextToken);
 		strcpy(nextTokenValue, yytext);
 		if (currentToken == SINCE)
 		{
-			printf("SINCE ");
 			result = ((2016 - atoi(nextTokenValue)) / 4) + 1;
-			printf("yearExp result = %d ", result);
 		}
 		else if (nextToken == THROUGH)
 		{
-			printf("THROUGH ");
 			nextToken = yylex();
 			result = ((atoi(yytext) - atoi(currentTokenValue)) / 4) + 1;
-			printf("yearExp result = %d ", result);
 		}
 		else if (currentToken == YEAR_NUM)
 		{
 			updateLookahead = 0;
 			int year_num = atoi(currentTokenValue);
-			printf("YEAR_NUM and year_num = %d ", year_num);
 			if (year_num != 2020)
 			{
-				printf("year num returns 1 \n");
 				result = 1;
 			}
 			else
 			{
-				printf("year num returns 0 \n");
 				result = 0;
 			}
 		}
@@ -131,11 +110,13 @@ int yearExp(int currentToken, int *lookahead)
 			printf("\n entered else in year_exp\n");
 		}
 	}
-	if(updateLookahead == 1){
-		*lookahead = yylex();
+	if (updateLookahead == 1)
+	{
+		lookahead = yylex();
 	}
-	else{
-		*lookahead = nextToken;
+	else
+	{
+		lookahead = nextToken;
 	}
 	return result;
 }
@@ -164,7 +145,8 @@ void parse()
 	lookahead = yylex();
 	line();
 	if (lookahead != 0)
-	{ // 0 means EOF
+	{
+		// 0 means EOF
 		printf("error lookahead = %d \n", lookahead);
 		errorMsg("EOF expected");
 		exit(1);
@@ -180,6 +162,7 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
+	printf("Sports which appeared in at least 7 olympic games:\n");
 	yyin = fopen(argv[1], "r");
 	if (yyin == NULL)
 	{
