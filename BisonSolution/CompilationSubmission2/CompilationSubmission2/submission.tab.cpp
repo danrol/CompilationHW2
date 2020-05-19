@@ -1340,7 +1340,7 @@ yyreduce:
   case 2:
 #line 49 "submission.y"
 {
-printf("year = %d, c = %d", (yyvsp[0].count).year, (yyvsp[0].count).c);
+//printf("year = %d, c = %d", $3.year, $3.c);
 double avg=(double)(yyvsp[0].count).year/(double)(yyvsp[0].count).c;
 printf("\naverage number of games per sport:%7.2f\n",avg);
 }
