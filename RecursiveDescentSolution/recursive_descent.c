@@ -8,7 +8,7 @@ extern char *yytext;
 void line();
 struct counter game();
 struct counter gamelist();
-int yearExp(int currentToken);
+int yearExp(int currentToken, int *lookahead);
 void match(int expectedToken);
 void parse();
 int lookahead;
@@ -38,7 +38,7 @@ struct counter gamelist()
 		lookahead = yylex();
 		gameResult = game();
 		gamelistResult.c += gameResult.c;
-		printf("line #%d gameResult.c = %d, gameResult.year = %d\n", lineCounter, gameResult.year, gameResult.c);
+		printf("\n\nline #%d gameResult.c = %d, gameResult.year = %d\n", lineCounter, gameResult.year, gameResult.c);
 		gamelistResult.year += gameResult.year;
 		lineCounter++;
 	}
@@ -59,18 +59,18 @@ struct counter game()
 
 	while (lookahead != SPORT && lookahead != 0)
 	{
-		int yearResult = yearExp(lookahead);
+		int yearResult = yearExp(lookahead, &lookahead);
 		if (yearResult >= 7)
 		{
 			printf("%s\n", sportName);
 		}
 		game.year += yearResult;
-		lookahead = yylex();
+		printf("lookahead token at the end of while = %d", lookahead);
 	}
 	return game;
 }
 
-int yearExp(int currentToken)
+int yearExp(int currentToken, int *lookahead)
 {
 	char currentTokenValue[30];
 	strcpy(currentTokenValue, yytext);
@@ -78,8 +78,10 @@ int yearExp(int currentToken)
 
 	printf("beginning of yearExp with current token = %d\n", currentToken);
 	int result;
+	int updateLookahead = 1;
+	int nextToken;
 
-	if (currentToken == COMMA)
+		if (currentToken == COMMA)
 	{
 		printf("COMMA ");
 		result = 0;
@@ -92,9 +94,10 @@ int yearExp(int currentToken)
 	}
 	else
 	{
-		int nextToken = yylex();
+		nextToken = yylex();
 		printf(" next token = %d\n", nextToken);
 		strcpy(nextTokenValue, yytext);
+		updateLookahead = 0;
 		if (currentToken == SINCE)
 		{
 			printf("SINCE ");
@@ -127,6 +130,12 @@ int yearExp(int currentToken)
 		{
 			printf("\n entered else in year_exp\n");
 		}
+	}
+	if(updateLookahead == 1){
+		*lookahead = yylex();
+	}
+	else{
+		*lookahead = nextToken;
 	}
 	return result;
 }
