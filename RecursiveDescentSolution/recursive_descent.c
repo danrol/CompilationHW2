@@ -65,7 +65,7 @@ struct counter game()
 			printf("%s\n", sportName);
 		}
 		game.year += yearResult;
-		printf("lookahead token at the end of while = %d", lookahead);
+		// printf("lookahead token at the end of while = %d", lookahead);
 	}
 	return game;
 }
@@ -97,7 +97,6 @@ int yearExp(int currentToken, int *lookahead)
 		nextToken = yylex();
 		printf(" next token = %d\n", nextToken);
 		strcpy(nextTokenValue, yytext);
-		updateLookahead = 0;
 		if (currentToken == SINCE)
 		{
 			printf("SINCE ");
@@ -107,12 +106,13 @@ int yearExp(int currentToken, int *lookahead)
 		else if (nextToken == THROUGH)
 		{
 			printf("THROUGH ");
-			yylex();
+			nextToken = yylex();
 			result = ((atoi(yytext) - atoi(currentTokenValue)) / 4) + 1;
 			printf("yearExp result = %d ", result);
 		}
 		else if (currentToken == YEAR_NUM)
 		{
+			updateLookahead = 0;
 			int year_num = atoi(currentTokenValue);
 			printf("YEAR_NUM and year_num = %d ", year_num);
 			if (year_num != 2020)
