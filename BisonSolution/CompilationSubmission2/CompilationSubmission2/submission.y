@@ -18,18 +18,12 @@
 /* note: no semicolon after the union */ 
 
 
-
 %code requires {
-	
-
-	
-
 	struct counter{
 		int c;
 		int year;
 		char cname[30];
-		
-		
+		bool isInit;
 	};
 }
 
@@ -51,14 +45,11 @@
 %type <count> gamelist game 
 
 
-
-
 %% 
 line: TITLE NEWLINE gamelist
 {
 printf("year = %d, c = %d", $3.year, $3.c);
 double avg=(double)$3.year/(double)$3.c;
-//printf("the sum is %d\n",$3.year);
 printf("\naverage number of games per sport:%7.2f\n",avg);
 }
 
@@ -68,28 +59,20 @@ gamelist: gamelist game NEWLINE
 {
 
 	//TODO deal with negative memory
-	if($$.c<0)
-	{
-		$$.c=1;
-
-	}else
+	if($$.isInit == true)
 	{
 		$$.c=$1.c+1;
-	}
-	if($$.year<0)
-	{
-		$$.year=$2.year;
-
+		$$.year = $1.year+$2.year;
 	}else
 	{
-		$$.year = $1.year+$2.year;
+		//first time that we approach .c and .year values
+		$$.c=1; 
+		$$.year = $2.year;
+		$$.isInit = true;
 	}
-
-//printf("%d\n" , $$.c);
-//printf("%d\n" , $$.year);
-
 } 
 
+// game parsing rules
 game: SPORT SPORT_NAME YEARS year_exp
 { if($4 >= 7)
 	{
@@ -97,9 +80,9 @@ game: SPORT SPORT_NAME YEARS year_exp
 	}
  $$.c=1;
  $$.year=$4;
-
  }
 
+// year_exp parsing rules
 year_exp: YEAR_NUM {if($$ != 2020)$$= 1; else $$ = 0; }
 year_exp:year_exp COMMA year_exp {$$ = $1 + $3;}
 year_exp:SINCE YEAR_NUM { $$ = ((2016-$2)/4)+1;}

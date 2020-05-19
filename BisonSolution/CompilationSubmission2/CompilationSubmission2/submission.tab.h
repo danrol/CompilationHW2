@@ -44,21 +44,16 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 22 "submission.y"
-
-	
-
-	
+#line 21 "submission.y"
 
 	struct counter{
 		int c;
 		int year;
 		char cname[30];
-		
-		
+		bool isInit;
 	};
 
-#line 62 "submission.tab.h"
+#line 57 "submission.tab.h"
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -82,7 +77,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 36 "submission.y"
+#line 30 "submission.y"
  
 	int year;
 	int number;
@@ -90,7 +85,7 @@ union YYSTYPE
 	char oname[30];
 	struct counter count;
 
-#line 94 "submission.tab.h"
+#line 89 "submission.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
