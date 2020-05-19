@@ -127,8 +127,8 @@ void match(int expectedToken)
 		lookahead = yylex();
 	else
 	{
-		char e[100]; /* todo: error message should mention name of token
-                   (not its number) */
+		char e[100]; 
+		
 		if (!lookahead)
 		{
 			printf("!!!!! inside else and lookahead is null ");

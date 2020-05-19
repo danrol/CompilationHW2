@@ -1659,7 +1659,7 @@ int main (int argc, char **argv)
    */
 
    yyin = fopen ("input.txt", "r");
-   printf("sports which appeared in at least 7 olympic games:\n");
+   printf("Sports which appeared in at least 7 olympic games:\n");
 
   // Parse through the input:
   yyparse();
