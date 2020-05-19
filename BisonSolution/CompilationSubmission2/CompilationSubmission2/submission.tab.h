@@ -44,7 +44,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 21 "submission.y"
+#line 20 "submission.y"
 
 	struct counter{
 		int c;
@@ -77,7 +77,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 30 "submission.y"
+#line 29 "submission.y"
  
 	int year;
 	int number;

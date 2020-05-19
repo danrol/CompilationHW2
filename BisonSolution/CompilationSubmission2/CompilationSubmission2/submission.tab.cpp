@@ -126,7 +126,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 21 "submission.y"
+#line 20 "submission.y"
 
 	struct counter{
 		int c;
@@ -159,7 +159,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 30 "submission.y"
+#line 29 "submission.y"
  
 	int year;
 	int number;
@@ -543,8 +543,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    49,    49,    56,    58,    75,    85,    86,    87,    88,
-      89
+       0,    48,    48,    55,    57,    74,    84,    85,    86,    87,
+      88
 };
 #endif
 
@@ -1338,7 +1338,7 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 50 "submission.y"
+#line 49 "submission.y"
 {
 printf("year = %d, c = %d", (yyvsp[0].count).year, (yyvsp[0].count).c);
 double avg=(double)(yyvsp[0].count).year/(double)(yyvsp[0].count).c;
@@ -1348,22 +1348,22 @@ printf("\naverage number of games per sport:%7.2f\n",avg);
     break;
 
   case 3:
-#line 56 "submission.y"
+#line 55 "submission.y"
                      {}
 #line 1354 "submission.tab.cpp"
     break;
 
   case 4:
-#line 59 "submission.y"
+#line 58 "submission.y"
 {
 
-	//TODO deal with negative memory
 	if((yyval.count).isInit == true)
 	{
 		(yyval.count).c=(yyvsp[-2].count).c+1;
 		(yyval.count).year = (yyvsp[-2].count).year+(yyvsp[-1].count).year;
 	}else
 	{
+		//deal with first time that we approach .c and .year values
 		(yyval.count).c=1; 
 		(yyval.count).year = (yyvsp[-1].count).year;
 		(yyval.count).isInit = true;
@@ -1373,7 +1373,7 @@ printf("\naverage number of games per sport:%7.2f\n",avg);
     break;
 
   case 5:
-#line 76 "submission.y"
+#line 75 "submission.y"
 { if((yyvsp[0].year) >= 7)
 	{
 	printf("%s\n" , (yyvsp[-2].oname));
@@ -1385,31 +1385,31 @@ printf("\naverage number of games per sport:%7.2f\n",avg);
     break;
 
   case 6:
-#line 85 "submission.y"
+#line 84 "submission.y"
                    {if((yyval.year) != 2020)(yyval.year)= 1; else (yyval.year) = 0; }
 #line 1391 "submission.tab.cpp"
     break;
 
   case 7:
-#line 86 "submission.y"
+#line 85 "submission.y"
                                  {(yyval.year) = (yyvsp[-2].year) + (yyvsp[0].year);}
 #line 1397 "submission.tab.cpp"
     break;
 
   case 8:
-#line 87 "submission.y"
+#line 86 "submission.y"
                         { (yyval.year) = ((2016-(yyvsp[0].year))/4)+1;}
 #line 1403 "submission.tab.cpp"
     break;
 
   case 9:
-#line 88 "submission.y"
+#line 87 "submission.y"
              { (yyval.year) = ((2016-1896)/4)+1;  }
 #line 1409 "submission.tab.cpp"
     break;
 
   case 10:
-#line 89 "submission.y"
+#line 88 "submission.y"
                                    {(yyval.year) = (((yyvsp[0].year)-(yyvsp[-2].year))/4)+1;}
 #line 1415 "submission.tab.cpp"
     break;
@@ -1647,7 +1647,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 92 "submission.y"
+#line 91 "submission.y"
 
 int main (int argc, char **argv)
 {
@@ -1665,9 +1665,9 @@ int main (int argc, char **argv)
   yyparse();
  
    fclose (yyin);
- 
 }
 
+// yyerror definitions
 void yyerror(const char *s) {
   printf ("EEK, parse error!  Message");
   // might as well halt now:

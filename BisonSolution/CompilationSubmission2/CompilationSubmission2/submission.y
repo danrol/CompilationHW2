@@ -17,7 +17,6 @@
 
 /* note: no semicolon after the union */ 
 
-
 %code requires {
 	struct counter{
 		int c;
@@ -58,14 +57,13 @@ gamelist: /* empty */{};
 gamelist: gamelist game NEWLINE 
 {
 
-	//TODO deal with negative memory
 	if($$.isInit == true)
 	{
 		$$.c=$1.c+1;
 		$$.year = $1.year+$2.year;
 	}else
 	{
-		//first time that we approach .c and .year values
+		//deal with first time that we approach .c and .year values
 		$$.c=1; 
 		$$.year = $2.year;
 		$$.isInit = true;
@@ -107,9 +105,9 @@ int main (int argc, char **argv)
   yyparse();
  
    fclose (yyin);
- 
 }
 
+// yyerror definitions
 void yyerror(const char *s) {
   printf ("EEK, parse error!  Message");
   // might as well halt now:
