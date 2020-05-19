@@ -1,0 +1,1391 @@
+m4_init()
+m4_define([b4_mergers], 
+[[]])
+
+m4_define([b4_symbol_numbers],
+[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17]])
+
+m4_define([b4_type_names],
+[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14],
+[15, 16],
+[12],
+[11, 17]])
+
+m4_define([b4_actions], 
+[b4_case(2, [b4_syncline(61, [["submission.y"]])dnl
+[{
+double avg=(double)]b4_rhs_value(3, 3, orig 15, [])[.year/(double)]b4_rhs_value(3, 3, orig 15, [])[.c;
+//printf("the sum is %d\n",$][3.year);
+printf("\naverage number of games per sport:%7.2f\n",avg);
+}]])
+
+b4_case(3, [b4_syncline(67, [["submission.y"]])dnl
+[                     {}]])
+
+b4_case(4, [b4_syncline(70, [["submission.y"]])dnl
+[{
+	if(]b4_lhs_value(orig 15, [])[.c<0)
+	{
+		]b4_lhs_value(orig 15, [])[.c=1;
+
+	}else
+	{
+		]b4_lhs_value(orig 15, [])[.c=]b4_rhs_value(3, 1, orig 15, [])[.c+1;
+	}
+	if(]b4_lhs_value(orig 15, [])[.year<0)
+	{
+		]b4_lhs_value(orig 15, [])[.year=]b4_rhs_value(3, 2, orig 16, [])[.year;
+
+	}else
+	{
+		]b4_lhs_value(orig 15, [])[.year = ]b4_rhs_value(3, 1, orig 15, [])[.year+]b4_rhs_value(3, 2, orig 16, [])[.year;
+	}
+
+//printf("%d\n" , $][$][.c);
+//printf("%d\n" , $][$][.year);
+
+}]])
+
+b4_case(5, [b4_syncline(94, [["submission.y"]])dnl
+[{ if(]b4_rhs_value(4, 4, orig 17, [])[ >= 7)
+	{
+	printf("%s\n" , ]b4_rhs_value(4, 2, 12, [])[);
+	}
+ ]b4_lhs_value(orig 16, [])[.c=1;
+ ]b4_lhs_value(orig 16, [])[.year=]b4_rhs_value(4, 4, orig 17, [])[;
+
+ }]])
+
+b4_case(6, [b4_syncline(103, [["submission.y"]])dnl
+[                   {if(]b4_lhs_value(orig 17, [])[ != 2020)]b4_lhs_value(orig 17, [])[= 1; else ]b4_lhs_value(orig 17, [])[ = 0; }]])
+
+b4_case(7, [b4_syncline(104, [["submission.y"]])dnl
+[                                 {]b4_lhs_value(orig 17, [])[ = ]b4_rhs_value(3, 1, orig 17, [])[ + ]b4_rhs_value(3, 3, orig 17, [])[;}]])
+
+b4_case(8, [b4_syncline(105, [["submission.y"]])dnl
+[                        { ]b4_lhs_value(orig 17, [])[ = ((2016-]b4_rhs_value(2, 2, 11, [])[)/4)+1;}]])
+
+b4_case(9, [b4_syncline(106, [["submission.y"]])dnl
+[             { ]b4_lhs_value(orig 17, [])[ = ((2016-1896)/4)+1;  }]])
+
+b4_case(10, [b4_syncline(107, [["submission.y"]])dnl
+[                                   {]b4_lhs_value(orig 17, [])[ = ((]b4_rhs_value(3, 3, 11, [])[-]b4_rhs_value(3, 1, 11, [])[)/4)+1;}]])
+
+])
+
+m4_define([b4_percent_code_user_qualifiers],
+[[[[[[requires]], [[submission.y:22.7@@7]], [[submission.y:22.15@@15]]]]]])
+
+
+m4_define([b4_symbol(16, type)],
+[[count]])
+
+
+m4_define([b4_symbol(6, type)],
+[[]])
+
+
+m4_define([b4_skeletonsdir],
+[[C:\Program Files (x86)\flex&bison\win_flex_bison-2.5.22\data/skeletons]])
+
+
+m4_define([b4_translate],
+[[     0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
+       5,     6,     7,     8,     9,    10,    11,    12]])
+
+
+m4_define([b4_symbol(3, is_token)],
+[[1]])
+
+
+m4_define([b4_use_push_for_pull_flag],
+[[0]])
+
+
+m4_define([b4_symbol(12, is_token)],
+[[1]])
+
+
+m4_define([b4_symbol(4, has_type)],
+[[0]])
+
+
+m4_define([b4_symbol(8, has_printer)],
+[[0]])
+
+
+m4_define([b4_pact_ninf],
+[[-9]])
+
+
+m4_define([b4_symbol(17, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(13, has_type)],
+[[0]])
+
+
+m4_define([b4_percent_define_loc(api.value.type)],
+[[[[submission.y:49.1@@1]], [[submission.y:49.29@@29]]]])
+
+
+m4_define([b4_conflict_list_heads],
+[[     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0]])
+
+
+m4_define([b4_symbol(0, tag)],
+[[$][end]])
+
+
+m4_define([b4_symbol(1, tag)],
+[[error]])
+
+
+m4_define([b4_symbol(4, user_number)],
+[[259]])
+
+
+m4_define([b4_symbol(2, tag)],
+[[$][undefined]])
+
+
+m4_define([b4_symbol(13, user_number)],
+[[-1]])
+
+
+m4_define([b4_symbol(3, tag)],
+[[SPORT]])
+
+
+m4_define([b4_symbol(4, tag)],
+[[TITLE]])
+
+
+m4_define([b4_symbol(5, tag)],
+[[YEARS]])
+
+
+m4_define([b4_toknum_max],
+[[267]])
+
+
+m4_define([b4_symbol(6, tag)],
+[[COMMA]])
+
+
+m4_define([b4_rhs],
+[[    14,     0,    -1,     4,    10,    15,    -1,    -1,    15,    16,
+      10,    -1,     3,    12,     5,    17,    -1,    11,    -1,    17,
+       6,    17,    -1,     8,    11,    -1,     9,    -1,    11,     7,
+      11,    -1]])
+
+
+m4_define([b4_last],
+[[14]])
+
+
+m4_define([b4_symbol(7, tag)],
+[[THROUGH]])
+
+
+m4_define([b4_symbol(8, tag)],
+[[SINCE]])
+
+
+m4_define([b4_stos_min],
+[[0]])
+
+
+m4_define([b4_symbol(9, tag)],
+[[ALL]])
+
+
+m4_define([b4_tag_seen_flag],
+[[1]])
+
+
+m4_define([b4_token_table_flag],
+[[0]])
+
+
+m4_define([b4_parser_file_name],
+[[submission.tab.cpp]])
+
+
+m4_define([b4_percent_define_bison_variables(lr.default-reduction)],
+[[]])
+
+
+m4_define([b4_symbol(5, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(5, id)],
+[[YEARS]])
+
+
+m4_define([b4_symbol(14, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(14, id)],
+[[line]])
+
+
+m4_define([b4_immediate],
+[[     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0]])
+
+
+m4_define([b4_symbol(17, type)],
+[[year]])
+
+
+m4_define([b4_table_min],
+[[1]])
+
+
+m4_define([b4_symbol(7, type)],
+[[]])
+
+
+m4_define([b4_table],
+[[    11,    12,     1,    13,     3,     4,     6,     8,    15,     9,
+      17,    10,    18,    19,    16]])
+
+
+m4_define([b4_conflicting_rules_max],
+[[0]])
+
+
+m4_define([b4_merger],
+[[     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0]])
+
+
+m4_define([b4_glr_flag],
+[[0]])
+
+
+m4_define([b4_percent_define_kind(api.value.type)],
+[[keyword]])
+
+
+m4_define([b4_symbol(2, is_token)],
+[[0]])
+
+
+m4_define([b4_symbol(11, is_token)],
+[[1]])
+
+
+m4_define([b4_check_max],
+[[17]])
+
+
+m4_define([b4_symbol(3, has_type)],
+[[0]])
+
+
+m4_define([b4_symbol(7, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(12, has_type)],
+[[1]])
+
+
+m4_define([b4_symbol(16, has_printer)],
+[[0]])
+
+
+m4_define([b4_spec_graph_file],
+[[]])
+
+
+m4_define([b4_symbol(10, tag)],
+[[NEWLINE]])
+
+
+m4_define([b4_symbol(3, user_number)],
+[[258]])
+
+
+m4_define([b4_symbol(11, tag)],
+[[YEAR_NUM]])
+
+
+m4_define([b4_rline_min],
+[[0]])
+
+
+m4_define([b4_symbol(12, user_number)],
+[[267]])
+
+
+m4_define([b4_symbol(12, tag)],
+[[SPORT_NAME]])
+
+
+m4_define([b4_symbol(13, tag)],
+[[$][accept]])
+
+
+m4_define([b4_toknum],
+[[     0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
+     265,   266,   267]])
+
+
+m4_define([b4_symbol(14, tag)],
+[[line]])
+
+
+m4_define([b4_symbol(15, tag)],
+[[gamelist]])
+
+
+m4_define([b4_symbol(16, tag)],
+[[game]])
+
+
+m4_define([b4_symbol(17, tag)],
+[[year_exp]])
+
+
+m4_define([b4_defgoto_max],
+[[14]])
+
+
+m4_define([b4_symbol(4, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(4, id)],
+[[TITLE]])
+
+
+m4_define([b4_symbol(13, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(13, id)],
+[[]])
+
+
+m4_define([b4_version],
+[[3.5.0]])
+
+
+m4_define([b4_symbol(8, type)],
+[[]])
+
+
+m4_define([b4_immediate_max],
+[[0]])
+
+
+m4_define([b4_translate_min],
+[[0]])
+
+
+m4_define([b4_symbol(1, is_token)],
+[[0]])
+
+
+m4_define([b4_symbol(10, is_token)],
+[[1]])
+
+
+m4_define([b4_percent_define(lr.default-reduction)],
+[[most]])
+
+
+m4_define([b4_symbol(2, has_type)],
+[[0]])
+
+
+m4_define([b4_symbol(6, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(11, has_type)],
+[[1]])
+
+
+m4_define([b4_symbol(15, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(2, user_number)],
+[[257]])
+
+
+m4_define([b4_symbol(11, user_number)],
+[[266]])
+
+
+m4_define([b4_pgoto_min],
+[[-9]])
+
+
+m4_define([b4_rhs_max],
+[[17]])
+
+
+m4_define([b4_percent_define_kind(lr.type)],
+[[keyword]])
+
+
+m4_define([b4_pgoto],
+[[    -9,    -9,    -9,    -9,    -4]])
+
+
+m4_define([b4_pact_max],
+[[7]])
+
+
+m4_define([b4_yacc_flag],
+[[0]])
+
+
+m4_define([b4_spec_verbose_file],
+[[]])
+
+
+m4_define([b4_symbol(3, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(3, id)],
+[[SPORT]])
+
+
+m4_define([b4_symbol(12, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(9, type)],
+[[]])
+
+
+m4_define([b4_symbol(12, id)],
+[[SPORT_NAME]])
+
+
+m4_define([b4_symbol(0, is_token)],
+[[1]])
+
+
+m4_define([b4_percent_define_kind(lr.keep-unreachable-state)],
+[[keyword]])
+
+
+m4_define([b4_symbol(1, has_type)],
+[[0]])
+
+
+m4_define([b4_symbol(5, has_printer)],
+[[0]])
+
+
+m4_define([b4_conflict_list_heads_min],
+[[0]])
+
+
+m4_define([b4_symbol(14, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(10, has_type)],
+[[0]])
+
+
+m4_define([b4_tname],
+[["$][end", "error", "$][undefined", "SPORT", "TITLE", "YEARS", "COMMA",
+  "THROUGH", "SINCE", "ALL", "NEWLINE", "YEAR_NUM", "SPORT_NAME",
+  "$][accept", "line", "gamelist", "game", "year_exp", ]b4_null[]])
+
+
+m4_define([b4_percent_define_loc(lr.default-reduction)],
+[[[[<default value>:-1.-1@@-1]], [[<default value>:-1.-1@@-1]]]])
+
+
+m4_define([b4_symbol(1, user_number)],
+[[256]])
+
+
+m4_define([b4_defact],
+[[     0,     0,     0,     3,     1,     2,     0,     0,     0,     4,
+       0,     0,     9,     6,     5,     8,     0,     0,    10,     7]])
+
+
+m4_define([b4_symbol(10, user_number)],
+[[265]])
+
+
+m4_define([b4_tokens_number],
+[[13]])
+
+
+m4_define([b4_stos_max],
+[[17]])
+
+
+m4_define([b4_percent_define_user_variables],
+[[[[[[api.value.type]], [[submission.y:49.1@@1]], [[submission.y:49.29@@29]]]]]])
+
+
+m4_define([b4_symbol(2, has_destructor)],
+[[0]])
+
+
+m4_define([b4_merger_min],
+[[0]])
+
+
+m4_define([b4_symbol(11, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(2, id)],
+[[]])
+
+
+m4_define([b4_table_max],
+[[19]])
+
+
+m4_define([b4_symbol(11, id)],
+[[YEAR_NUM]])
+
+
+m4_define([b4_spec_name_prefix],
+[[]])
+
+
+m4_define([b4_epilogue],
+[[]b4_syncline(112, [["submission.y"]])dnl
+[
+int main (int argc, char **argv)
+{
+   //if (argc != 2) {
+   //   fprintf(stderr, "Usage: mylex <input file name>\n", argv @{0@});
+   //   exit (1);
+   //}
+
+   yyin = fopen ("input.txt", "r");
+   printf("sports which appeared in at least 7 olympic games:\n");
+
+  // Parse through the input:
+  yyparse();
+ 
+   fclose (yyin);
+ 
+}
+
+void yyerror(const char *s) {
+  printf ("EEK, parse error!  Message");
+  // might as well halt now:
+  exit(-1);
+}
+]])
+
+
+m4_define([b4_table_ninf],
+[[-1]])
+
+
+m4_define([b4_prhs],
+[[     0,     0,     3,     7,     8,    12,    17,    19,    23,    26,
+      28]])
+
+
+m4_define([b4_percent_define_kind(lr.default-reduction)],
+[[keyword]])
+
+
+m4_define([b4_symbol(4, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(0, has_type)],
+[[0]])
+
+
+m4_define([b4_check],
+[[     8,     9,     4,    11,    10,     0,     3,    12,    11,    10,
+       6,     5,    11,    17,     7]])
+
+
+m4_define([b4_symbol(13, has_printer)],
+[[0]])
+
+
+m4_define([b4_nterms_number],
+[[5]])
+
+
+m4_define([b4_rline_max],
+[[107]])
+
+
+m4_define([b4_percent_define_syncline(api.value.type)],
+[[]b4_syncline(49, [["submission.y"]])dnl
+[]])
+
+
+m4_define([b4_symbol(9, is_token)],
+[[1]])
+
+
+m4_define([b4_symbol(0, user_number)],
+[[0]])
+
+
+m4_define([b4_dprec],
+[[     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0]])
+
+
+m4_define([b4_symbol(10, type)],
+[[]])
+
+
+m4_define([b4_symbol(0, type)],
+[[]])
+
+
+m4_define([b4_rline],
+[[     0,    60,    60,    67,    69,    93,   103,   104,   105,   106,
+     107]])
+
+
+m4_define([b4_prhs_min],
+[[0]])
+
+
+m4_define([b4_spec_outfile],
+[[submission.tab.cpp]])
+
+
+m4_define([b4_symbol(1, has_destructor)],
+[[0]])
+
+
+m4_define([b4_translate_max],
+[[12]])
+
+
+m4_define([b4_symbol(10, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(1, id)],
+[[error]])
+
+
+m4_define([b4_union_members],
+[[]b4_syncline(36, [["submission.y"]])dnl
+[ 
+	int year;
+	int number;
+	int avr;
+	char oname@{30@};
+	struct counter count;
+	
+
+]])
+
+
+m4_define([b4_symbol(10, id)],
+[[NEWLINE]])
+
+
+m4_define([b4_user_token_number_max],
+[[267]])
+
+
+m4_define([b4_r1_min],
+[[0]])
+
+
+m4_define([b4_max_left_semantic_context],
+[[0]])
+
+
+m4_define([b4_symbol(3, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(12, has_printer)],
+[[0]])
+
+
+m4_define([b4_pgoto_max],
+[[-4]])
+
+
+m4_define([b4_symbol(8, is_token)],
+[[1]])
+
+
+m4_define([b4_symbol(11, type)],
+[[year]])
+
+
+m4_define([b4_rules_number],
+[[10]])
+
+
+m4_define([b4_symbol(17, is_token)],
+[[0]])
+
+
+m4_define([b4_symbol(1, type)],
+[[]])
+
+
+m4_define([b4_symbol(9, has_type)],
+[[0]])
+
+
+m4_define([b4_file_name_all_but_ext],
+[[submission.tab]])
+
+
+m4_define([b4_percent_code(requires)],
+[[]b4_syncline(22, [["submission.y"]])dnl
+[
+	
+
+	
+
+	struct counter{
+		int c;
+		int year;
+		char cname@{30@};
+		
+		
+	};
+]])
+
+
+m4_define([b4_percent_define(lr.type)],
+[[lalr]])
+
+
+m4_define([b4_symbol(9, user_number)],
+[[264]])
+
+
+m4_define([b4_symbol(0, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(0, id)],
+[[]])
+
+
+m4_define([b4_r2_min],
+[[0]])
+
+
+m4_define([b4_pact],
+[[    -2,    -6,     5,    -9,    -9,     3,    -5,    -1,     6,    -9,
+      -8,    -3,    -9,     7,     4,    -9,     1,    -8,    -9,     4]])
+
+
+m4_define([b4_dprec_min],
+[[0]])
+
+
+m4_define([b4_defact_min],
+[[0]])
+
+
+m4_define([b4_percent_define(lr.keep-unreachable-state)],
+[[false]])
+
+
+m4_define([b4_synclines_flag],
+[[1]])
+
+
+m4_define([b4_nondeterministic_flag],
+[[0]])
+
+
+m4_define([b4_defines_flag],
+[[1]])
+
+
+m4_define([b4_conflict_list_heads_max],
+[[0]])
+
+
+m4_define([b4_dir_prefix],
+[[]])
+
+
+m4_define([b4_symbol(2, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(11, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(12, type)],
+[[oname]])
+
+
+m4_define([b4_symbol(2, type)],
+[[]])
+
+
+m4_define([b4_symbol(7, is_token)],
+[[1]])
+
+
+m4_define([b4_symbol(16, is_token)],
+[[0]])
+
+
+m4_define([b4_symbol(0, has_id)],
+[[0]])
+
+
+m4_define([b4_symbol(1, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(8, has_type)],
+[[0]])
+
+
+m4_define([b4_symbol(2, has_id)],
+[[0]])
+
+
+m4_define([b4_symbol(17, has_type)],
+[[1]])
+
+
+m4_define([b4_symbol(3, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(4, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(5, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(6, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(7, has_id)],
+[[1]])
+
+
+m4_define([b4_merger_max],
+[[0]])
+
+
+m4_define([b4_symbol(8, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(8, user_number)],
+[[263]])
+
+
+m4_define([b4_symbol(9, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(17, user_number)],
+[[-1]])
+
+
+m4_define([b4_undef_token_number],
+[[2]])
+
+
+m4_define([b4_symbol(9, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(1, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(9, id)],
+[[ALL]])
+
+
+m4_define([b4_symbol(10, has_printer)],
+[[0]])
+
+
+m4_define([b4_percent_define_bison_variables(lr.type)],
+[[]])
+
+
+m4_define([b4_symbols_number],
+[[18]])
+
+
+m4_define([b4_symbol(13, type)],
+[[]])
+
+
+m4_define([b4_symbol(3, type)],
+[[]])
+
+
+m4_define([b4_symbol(6, is_token)],
+[[1]])
+
+
+m4_define([b4_symbol(15, is_token)],
+[[0]])
+
+
+m4_define([b4_symbol(10, has_id)],
+[[1]])
+
+
+m4_define([b4_percent_define_syncline(lr.default-reduction)],
+[[]])
+
+
+m4_define([b4_symbol(11, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(7, has_type)],
+[[0]])
+
+
+m4_define([b4_symbol(12, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(16, has_type)],
+[[1]])
+
+
+m4_define([b4_symbol(13, has_id)],
+[[0]])
+
+
+m4_define([b4_prhs_max],
+[[28]])
+
+
+m4_define([b4_symbol(14, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(15, has_id)],
+[[1]])
+
+
+m4_define([b4_symbol(16, has_id)],
+[[1]])
+
+
+m4_define([b4_percent_define_bison_variables(lr.keep-unreachable-state)],
+[[]])
+
+
+m4_define([b4_symbol(17, has_id)],
+[[1]])
+
+
+m4_define([b4_spec_file_prefix],
+[[]])
+
+
+m4_define([b4_symbol(7, user_number)],
+[[262]])
+
+
+m4_define([b4_r1_max],
+[[17]])
+
+
+m4_define([b4_symbol(16, user_number)],
+[[-1]])
+
+
+m4_define([b4_required_version],
+[[0]])
+
+
+m4_define([b4_percent_define_loc(lr.type)],
+[[[[<default value>:-1.-1@@-1]], [[<default value>:-1.-1@@-1]]]])
+
+
+m4_define([b4_toknum_min],
+[[0]])
+
+
+m4_define([b4_symbol(8, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(0, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(17, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(8, id)],
+[[SINCE]])
+
+
+m4_define([b4_symbol(17, id)],
+[[year_exp]])
+
+
+m4_define([b4_symbol(14, type)],
+[[]])
+
+
+m4_define([b4_symbol(4, type)],
+[[]])
+
+
+m4_define([b4_conflicting_rules_min],
+[[0]])
+
+
+m4_define([b4_r1],
+[[     0,    13,    14,    15,    15,    16,    17,    17,    17,    17,
+      17]])
+
+
+m4_define([b4_symbol(5, is_token)],
+[[1]])
+
+
+m4_define([b4_pre_prologue],
+[[]b4_syncline(1, [["submission.y"]])dnl
+[ 
+	#define _CRT_SECURE_NO_DEPRECATE
+    #include <stdio.h> 
+    #include <iostream> 
+	#include <string.h>
+	using namespace std;
+
+	#define SIZE 30
+
+  // stuff from flex that bison needs to know about: 
+  extern int yylex(); 
+  extern int yyparse(); 
+  extern FILE *yyin;
+
+  void yyerror(const char *s); 
+]])
+
+
+m4_define([b4_symbol(14, is_token)],
+[[0]])
+
+
+m4_define([b4_r2],
+[[     0,     2,     3,     0,     3,     4,     1,     3,     2,     1,
+       3]])
+
+
+m4_define([b4_percent_define_loc(lr.keep-unreachable-state)],
+[[[[<default value>:-1.-1@@-1]], [[<default value>:-1.-1@@-1]]]])
+
+
+m4_define([b4_symbol(orig 13, number)],
+[[13]])
+
+
+m4_define([b4_symbol(orig 14, number)],
+[[14]])
+
+
+m4_define([b4_symbol(6, has_type)],
+[[0]])
+
+
+m4_define([b4_symbol(orig 15, number)],
+[[15]])
+
+
+m4_define([b4_symbol(15, has_type)],
+[[1]])
+
+
+m4_define([b4_check_min],
+[[0]])
+
+
+m4_define([b4_symbol(orig 16, number)],
+[[16]])
+
+
+m4_define([b4_states_number],
+[[20]])
+
+
+m4_define([b4_symbol(orig 17, number)],
+[[17]])
+
+
+m4_define([b4_r2_max],
+[[4]])
+
+
+m4_define([b4_symbol(6, user_number)],
+[[261]])
+
+
+m4_define([b4_symbol(15, user_number)],
+[[-1]])
+
+
+m4_define([b4_symbol(0, number)],
+[[0]])
+
+
+m4_define([b4_dprec_max],
+[[0]])
+
+
+m4_define([b4_symbol(1, number)],
+[[1]])
+
+
+m4_define([b4_defgoto],
+[[    -1,     2,     5,     7,    14]])
+
+
+m4_define([b4_defact_max],
+[[10]])
+
+
+m4_define([b4_symbol(2, number)],
+[[2]])
+
+
+m4_define([b4_stos],
+[[     0,     4,    14,    10,     0,    15,     3,    16,    12,    10,
+       5,     8,     9,    11,    17,    11,     7,     6,    11,    17]])
+
+
+m4_define([b4_symbol(3, number)],
+[[3]])
+
+
+m4_define([b4_symbol(4, number)],
+[[4]])
+
+
+m4_define([b4_final_state_number],
+[[4]])
+
+
+m4_define([b4_symbol(5, number)],
+[[5]])
+
+
+m4_define([b4_symbol(6, number)],
+[[6]])
+
+
+m4_define([b4_spec_header_file],
+[[submission.tab.h]])
+
+
+m4_define([b4_defgoto_min],
+[[-1]])
+
+
+m4_define([b4_symbol(7, number)],
+[[7]])
+
+
+m4_define([b4_symbol(8, number)],
+[[8]])
+
+
+m4_define([b4_symbol(7, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(9, number)],
+[[9]])
+
+
+m4_define([b4_percent_define_how(api.value.type)],
+[[2]])
+
+
+m4_define([b4_symbol(16, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(7, id)],
+[[THROUGH]])
+
+
+m4_define([b4_file_name],
+[["submission.y"]])
+
+
+m4_define([b4_symbol(16, id)],
+[[game]])
+
+
+m4_define([b4_symbol(15, type)],
+[[count]])
+
+
+m4_define([b4_immediate_min],
+[[0]])
+
+
+m4_define([b4_symbol(5, type)],
+[[]])
+
+
+m4_define([b4_percent_define(api.value.type)],
+[[union]])
+
+
+m4_define([b4_symbol(4, is_token)],
+[[1]])
+
+
+m4_define([b4_percent_define_syncline(lr.type)],
+[[]])
+
+
+m4_define([b4_symbol(13, is_token)],
+[[0]])
+
+
+m4_define([b4_symbol(5, has_type)],
+[[0]])
+
+
+m4_define([b4_symbol(9, has_printer)],
+[[0]])
+
+
+m4_define([b4_symbol(14, has_type)],
+[[0]])
+
+
+m4_define([b4_symbol(5, user_number)],
+[[260]])
+
+
+m4_define([b4_symbol(14, user_number)],
+[[-1]])
+
+
+m4_define([b4_symbol(10, number)],
+[[10]])
+
+
+m4_define([b4_symbol(11, number)],
+[[11]])
+
+
+m4_define([b4_percent_define_syncline(lr.keep-unreachable-state)],
+[[]])
+
+
+m4_define([b4_symbol(12, number)],
+[[12]])
+
+
+m4_define([b4_symbol(13, number)],
+[[13]])
+
+
+m4_define([b4_rhs_min],
+[[-1]])
+
+
+m4_define([b4_symbol(14, number)],
+[[14]])
+
+
+m4_define([b4_symbol(15, number)],
+[[15]])
+
+
+m4_define([b4_symbol(16, number)],
+[[16]])
+
+
+m4_define([b4_symbol(17, number)],
+[[17]])
+
+
+m4_define([b4_pact_min],
+[[-9]])
+
+
+m4_define([b4_symbol(6, has_destructor)],
+[[0]])
+
+
+m4_define([b4_symbol(6, id)],
+[[COMMA]])
+
+
+m4_define([b4_symbol(15, has_destructor)],
+[[0]])
+
+
+m4_define([b4_conflicting_rules],
+[[     0]])
+
+
+m4_define([b4_symbol(15, id)],
+[[gamelist]])
+
+
